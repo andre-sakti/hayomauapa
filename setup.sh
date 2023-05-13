@@ -984,15 +984,15 @@ git clone https://github.com/andre-sakti/limit.git /root/limit/ &> /dev/null
 babu=$(cat /etc/.bijipeler/license.key)
 echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
 cd /root/limit
-    git config --global user.email "andregemes123@gmail.com" &> /dev/null
-    git config --global user.name "andre-sakti" &> /dev/null
-    rm -rf .git &> /dev/null
-    git init &> /dev/null
-    git add . &> /dev/null
-    git commit -m m &> /dev/null
-    git branch -M main &> /dev/null
+    git config --global user.email "andregemes123@gmail.com" 
+    git config --global user.name "andre-sakti" 
+    rm -rf .git 
+    git init 
+    git add . 
+    git commit -m m 
+    git branch -M main 
     git remote add origin https://github.com/andre-sakti/limit
-    git push -f https://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@github.com/andre-sakti/limit.git &> /dev/null
+    git push -f https://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@github.com/andre-sakti/limit.git 
 cd
 fi
 #send status install
