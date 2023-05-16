@@ -992,7 +992,7 @@ cd /root/limit
     git commit -m m 
     git branch -M main 
     git remote add origin https://github.com/andre-sakti/limit
-    git push -f https://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@github.com/andre-sakti/limit.git 
+    git push -f https://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@github.com/andre-sakti/limit.git 
 cd
 fi
 #send status install
