@@ -224,13 +224,13 @@ echo -e "                 ${BICyan}Bot Dev     : ${BIPurple}@xolvadev${NC}"
 echo -e "                 ${BICyan}Decodec     :${BIPurple} @boootzzzz${NC}"
 echo -e "                 ${BICyan}${On_IPurple}Tanks To All My ${UWhite}Friends${NC}"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │                  ${BIWhite}${UWhite}Server Informations${NC}"                                                                                                                                                           echo -e "${BICyan} │"
+echo -e "${BICyan} │                  ${BIWhite}${UWhite}Server Informations${NC}"
 echo -e " ${BICyan}│  ${BICyan}Use Core        :  ${BIPurple}XRAY${NC}"
 echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIPurple}$(cat /etc/xray/domain)${NC}"
 echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
-echo -e "   ${BICyan}     STUNNEL ${NC}: $resst" "${BICyan} DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
+echo -e "  ${On_IRed}   ${BICyan} SSH : $ressh${On_IRed}  ${BICyan} NGINX ${On_IRed}: $resngx""${On_IRed} ${BICyan}  XRAY ${NC}${On_IRed}: $resv2r""${On_IRed} ${BICyan} TROJAN ${NC}${On_IRed}: $resv2r${On_IRed}   ${NC}"
+echo -e "  ${On_IRed} ${BICyan}${On_IRed}     STUNNEL ${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR ${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} SSH-WS ${NC}${On_IRed}: $ressshws${On_IRed}         ${NC}"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e " ${BICyan}│   ${BICyan}[${BIWhite}01${BICyan}] SSH     ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"    "     ${BICyan}[${BIWhite}06${BICyan}] SOCKWS    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan}   │"
 echo -e " ${BICyan}│   ${BICyan}[${BIWhite}02${BICyan}] VMESS   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "     ${BICyan}[${BIWhite}07${BICyan}] BACKUP    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan}   │"
@@ -242,7 +242,7 @@ echo -e " ${BICyan}┌───────────────────�
 echo -e " ${BICyan}│  Version       :\033[1;36m 1.0\e[0m"
 echo -e " ${BICyan}│  User          :\033[1;36m $Nama_Issued_License \e[0m"
 echo -e " ${BICyan}│  Expiry script${NC} : ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC}"
-echo -e " ${BICyan}└──────────────────────
+echo -e " ${BICyan}└─────────────────────────────────────┘${NC}"
 echo
 read -p " Select menu : " opt
 echo -e ""
@@ -256,9 +256,12 @@ case $opt in
 7) clear ; menu-bckp ;;
 8) clear ; addhost ;;
 9) clear ; genssl ;;
-10) clear ; restarts ;;
+10) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
+    clear; echo -e "${OKEY} Successfull Restarted All Service";
+    ;;
 6969) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/update.sh && chmod +x update.sh && ./update.sh && rm -f /root/update.sh ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
 esac
+
