@@ -221,7 +221,7 @@ export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered
 echo -e "                         ${BIWhite}${UWhite}About${NC}"
 echo -e "                 ${BICyan}Base Script : ${BIPurple}Andre_Sakti${NC}"
 #echo -e "                 ${BICyan}Bot Dev     : ${BIPurple}@xolvadev${NC}"
-e#cho -e "                 ${BICyan}Decodec     :${BIPurple} @boootzzzz${NC}"
+#echo -e "                 ${BICyan}Decodec     :${BIPurple} @boootzzzz${NC}"
 echo -e "                 ${BICyan}${On_IPurple}Script By Andre Sakti ${UWhite}Friends${NC}"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan} │                  ${BIWhite}${UWhite}Server Informations${NC}"
