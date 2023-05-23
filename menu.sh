@@ -230,7 +230,7 @@ echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIPurple}$(cat /etc/xray/d
 echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "  ${On_IRed}   ${BICyan} SSH : $ressh${On_IRed}  ${BICyan} NGINX ${On_IRed}: $resngx""${On_IRed} ${BICyan}  XRAY ${NC}${On_IRed}: $resv2r""${On_IRed} ${BICyan} TROJAN ${NC}${On_IRed}: $resv2r${On_IRed}   ${NC}"
-echo -e "  ${On_IRed} ${BICyan}${On_IRed}     STUNNEL ${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR ${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} SSH-WS ${NC}${On_IRed}: $ressshws${On_IRed}         ${NC}"
+echo -e "  ${On_IRed} ${BICyan}${On_IRed}     STUNNEL ${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR ${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} #SSH-WS ${NC}${On_IRed}: $ressshws${On_IRed}         ${NC}"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e " ${BICyan}│   ${BICyan}[${BIWhite}01${BICyan}] SSH     ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"    "     ${BICyan}[${BIWhite}06${BICyan}] SOCKWS    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan}   │"
 echo -e " ${BICyan}│   ${BICyan}[${BIWhite}02${BICyan}] VMESS   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "     ${BICyan}[${BIWhite}07${BICyan}] BACKUP    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan}   │"
