@@ -235,7 +235,7 @@ is_root() {
 is_root
 #pkg install ncurses-utils
 ip=$(wget -qO- ipinfo.io/ip)
-domainhost=$(cat /root/domain)
+#domainhost=$(cat /root/domain)
 # GETTING DOMAIN NAME
 Domen=$(cat /etc/xray/domain)
 region=$(wget -qO- ipinfo.io/region)
