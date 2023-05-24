@@ -260,8 +260,10 @@ case $opt in
 7) clear ; menu-bckp ;;
 8) clear ; addhost ;;
 9) clear ; genssl ;;
-11) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/cek-bandwidth.sh && chmod +x cek-bandwidth.sh && ./cek-bandwidth.sh && rm -f /root/cek-bandwidth.sh ;;
-12) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/limitspeed.sh && chmod +x limitspeed.sh && ./limitspeed.sh && rm -f /root/limitspeed.sh ;;
+11) clear ; cek-bandwidth ;;
+12) clear ; limitspeed ;;
+011) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/cek-bandwidth.sh && chmod +x cek-bandwidth.sh && ./cek-bandwidth.sh && rm -f /root/cek-bandwidth.sh ;;
+012) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/limitspeed.sh && chmod +x limitspeed.sh && ./limitspeed.sh && rm -f /root/limitspeed.sh ;;
 10) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
     clear; echo -e "${OKEY} Successfull Restarted All Service";
     ;;
