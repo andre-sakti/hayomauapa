@@ -281,7 +281,7 @@ echo -e "${yl}└─────────────────────
 echo -e "${yl}┌─────────────────────────────────────────────────────────────┐${NC}"
 echo -e "${yl}   Version       :\033[1;36m 1.0\e[0m"
 echo -e "${yl}   User          :\033[1;36m $Nama_Issued_License \e[0m"
-echo -e "${yl}   Expiry script${NC} : ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC}"
+echo -e "${yl}   Expiry script $yl: ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC}"
 echo -e "${yl}└─────────────────────────────────────────────────────────────┘${NC}"
 echo
 read -p " Select menu : " opt
