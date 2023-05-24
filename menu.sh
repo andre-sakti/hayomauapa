@@ -26,14 +26,12 @@ export LANGUAGE='en_US.UTF-8'
 
 
 # // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
+export m="\033[0;1;31m"
+export y="\033[0;1;34m"
+export yy="\033[0;1;36m"
+export yl="\033[0;1;37m"
+export wh="\033[0;1;33m"
+export xz="\033[0;1;35m"
 
 # // Export Banner Status Information
 export EROR="[${RED} EROR ${NC}]"
@@ -218,35 +216,72 @@ IPVPS=$(curl -s ipinfo.io/ip )
 export Server_URL="raw.githubusercontent.com/andre-sakti/test/main"
 License_Key=$(cat /etc/${Auther}/license.key)
 export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 7-100 | tr -d '\r' | tr -d '\r\n')
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "                         ${BIWhite}${UWhite}About${NC}"
-echo -e "                 ${BICyan}Base Script : ${BIPurple}Andre_Sakti${NC}"
-#echo -e "                 ${BICyan}Bot Dev     : ${BIPurple}@xolvadev${NC}"
-#echo -e "                 ${BICyan}Decodec     :${BIPurple} @boootzzzz${NC}"
-echo -e "                 ${BICyan}${On_IPurple}Script By Andre ${UWhite}Sakti${NC}"
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │                  ${BIWhite}${UWhite}Server Informations${NC}"
-echo -e " ${BICyan}│  ${BICyan}Use Core        :  ${BIPurple}XRAY${NC}"
-echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIPurple}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e "  ${On_IRed}   ${BICyan} SSH : ${On_IRed}$ressh${On_IRed}"  "${BICyan} NGINX ${On_IRed}: $resngx""${On_IRed} ${BICyan}  XRAY ${NC}${On_IRed}: $resv2r""${On_IRed} ${BICyan} TROJAN ${NC}${On_IRed}: $resv2r${On_IRed}    ${NC}"
-echo -e "  ${On_IRed} ${BICyan}${On_IRed}      ${BICyan}STUNNEL ${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR ${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} SSH-WS ${NC}${On_IRed}: $ressshws${On_IRed}        ${NC}"
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}01${BICyan}] SSH     ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"    "     ${BICyan}[${BIWhite}06${BICyan}] SOCKWS    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan}   │"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}02${BICyan}] VMESS   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "     ${BICyan}[${BIWhite}07${BICyan}] BACKUP    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan}   │"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}03${BICyan}] VLESS   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"  "     ${BICyan}[${BIWhite}08${BICyan}] ADD-HOST      ${NC}" "${BICyan}     │"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}04${BICyan}] TROJAN  ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "     ${BICyan}[${BIWhite}09${BICyan}] GEN SSL             │"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}05${BICyan}] SS WS   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"  "     ${BICyan}[${BIWhite}10${BICyan}] Restart Service   ${BICyan}  │${NC}"
-echo -e " ${BICyan}│                                                     │${NC}"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}11${BICyan}] Cek Bandwidth                                │${NC}"
-echo -e " ${BICyan}│   ${BICyan}[${BIWhite}12${BICyan}] Limit Speed                                  │${NC}"
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
-echo -e " ${BICyan}│  Version       :\033[1;36m 1.0\e[0m"
-echo -e " ${BICyan}│  User          :\033[1;36m $Nama_Issued_License \e[0m"
-echo -e " ${BICyan}│  Expiry script${NC} : ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC}"
-echo -e " ${BICyan}└─────────────────────────────────────┘${NC}"
+#information
+OK="${yy}[OK]${yl}"
+Error="${m}[Mistake]${yl}"
+#pkg install ncurses-utils
+#echo -e "Getting Information Please Wait...."
+is_root() {
+    if [ 0 == $UID ]; then
+        echo -e "${OK} ${yl} The current user is the root user..${yl}"
+        sleep 1
+        echo -e "Getting Information...."
+    else
+        echo -e "${Error} ${yl} Please switch to the root user and execute start-menu again ${yl}"
+        exit 1
+    fi
+}
+is_root
+#pkg install ncurses-utils
+ip=$(wget -qO- ipinfo.io/ip)
+domainhost=$(cat /root/domain)
+# GETTING DOMAIN NAME
+Domen=$(cat /etc/xray/domain)
+region=$(wget -qO- ipinfo.io/region)
+isp=$(wget -qO- ipinfo.io/org)
+timezone=$(wget -qO- ipinfo.io/timezone)
+ossys=$(neofetch | grep "OS" | cut -d: -f2 | sed 's/ //g')
+host=$(neofetch | grep "Host" | cut -d: -f2 | sed 's/ //g')
+kernel=$(neofetch | grep "Kernel" | cut -d: -f2 | sed 's/ //g')
+uptime=$(neofetch | grep "Uptime" | cut -d: -f2 | sed 's/ //g')
+cpu=$(neofetch | grep "CPU" | cut -d: -f2 | sed 's/ //g')
+memory=$(neofetch | grep "Memory" | cut -d: -f2 | sed 's/ //g')
+echo -e "Getting Information..."
+clear
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                     SYSTEM INFORMATION                        \E[0m"
+echo -e "\E[0;41;37m                   SCRIPT BY ANDRE SAKTI                       \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$yy IP Address  :$xz $ip $xz"
+#echo -e "$yy Domain     :$yl $domainhost $yl"
+echo -e "$yy Domain      :$yl $Domen $yl"
+echo -e "$yy City        :$yl $region $yl"
+echo -e "$yy ISP         :$yl $isp $yl"
+#echo -e "$yy Host       :$yl $host $yl"
+#echo -e "$yy CPU        :$yl $cpu $yl"
+#echo -e "$yy Kernel     :$yl $kernel $yl"
+echo -e "$yy OS System   :$yl $ossys $yl"
+#echo -e "$yy Time Zone  :$yl $timezone $yl"
+echo -e "$yy RAM         :$yl $memory $yl"
+echo -e "$yy Up Time     :$yl $uptime $yl"
+echo -e "$yy Date        :$yl $(date +%A) $(date +%m-%d-%Y)"
+echo -e "$yy My Telegram :$xz https://t.me/AndreSakti_Store $xz"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"     
+echo -e "  ${m}   ${BICyan} SSH : ${On_IRed}$ressh${On_IRed}"  "${BICyan} NGINX ${On_IRed}: $resngx""${On_IRed} ${BICyan}  XRAY ${NC}${On_IRed}: $resv2r""${On_IRed} ${BICyan} TROJAN ${NC}${On_IRed}: $resv2r${On_IRed}    ${m}"
+echo -e "  ${m} ${BICyan}${On_IRed}      ${BICyan}STUNNEL ${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR ${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} SSH-WS ${NC}${On_IRed}: $ressshws${On_IRed}        ${m}"
+echo -e "${yl} ┌──────────────────────────────────────────────────────────────┐${yl}"
+echo -e " ${yl}│   $yy 1$wh.  SSH $wh $yy[${wh}Menu$yy]      $y┃$yy 7$wh.  BANDWIDTH$wh $yy[${wh}Menu$yy]   │${NC}"
+echo -e " ${yl}│   $yy 2$wh.  VMESS $wh $yy[${wh}Menu$yy]      $y┃$yy 8$wh.  LIMIT SPEED$wh $yy[${wh}Menu$yy]   │${NC}"  
+echo -e " ${yl}│   $yy 3$wh.  VLESS $wh $yy[${wh}Menu$yy]      $y┃$yy 9$wh.  ADD-HOST$wh $yy[${wh}Menu$yy]   │${NC}" 
+echo -e " ${yl}│   $yy 4$wh.  TROJAN $wh $yy[${wh}Menu$yy]      $y┃$yy 10$wh.  BACKUP$wh $yy[${wh}Menu$yy]   │${NC}" 
+echo -e " ${yl}│   $yy 5$wh.  SS WS $wh $yy[${wh}Menu$yy]      $y┃$yy 11$wh.  GEN SSL$wh $yy[${wh}Menu$yy]   │${NC}" 
+echo -e " ${yl}│   $yy 6$wh.  SOCK WS $wh $yy[${wh}Menu$yy]      $y┃$yy 12$wh.  RESTART SERVICE$wh $yy[${wh}Menu$yy]   │${NC}" 
+echo -e " ${yl}└──────────────────────────────────────────────────────────────┘${yl}"
+echo -e " ${yl}┌──────────────────────────────────────────────────────────────┐${NC}"
+echo -e " ${yl}   Version       :\033[1;36m 1.0\e[0m"
+echo -e " ${yl}   User          :\033[1;36m $Nama_Issued_License \e[0m"
+echo -e " ${yl}   Expiry script${NC} : ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC}"
+echo -e " ${yl}└──────────────────────────────────────────────────────────────┘${NC}"
 echo
 read -p " Select menu : " opt
 echo -e ""
@@ -257,17 +292,17 @@ case $opt in
 4) clear ; menu-trojan ;;
 5) clear ; menu-ss ;;
 6) clear ; menu-socks ;;
-7) clear ; menu-bckp ;;
-8) clear ; addhost ;;
-9) clear ; genssl ;;
-11) clear ; cek-bandwidth ;;
-12) clear ; limitspeed ;;
-011) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/cek-bandwidth.sh && chmod +x cek-bandwidth.sh && ./cek-bandwidth.sh && rm -f /root/cek-bandwidth.sh ;;
-012) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/limitspeed.sh && chmod +x limitspeed.sh && ./limitspeed.sh && rm -f /root/limitspeed.sh ;;
-10) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
+7) clear ; cek-bandwidth ;;
+8) clear ; limitspeed ;;
+9) clear ; addhost ;;
+10) clear ; menu-bckp ;;
+11) clear ; genssl ;;
+011011011011011011011) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/cek-bandwidth.sh && chmod +x cek-bandwidth.sh && ./cek-bandwidth.sh && rm -f /root/cek-bandwidth.sh ;;
+012012012012012012012012) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/limitspeed.sh && chmod +x limitspeed.sh && ./limitspeed.sh && rm -f /root/limitspeed.sh ;;
+12) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
     clear; echo -e "${OKEY} Successfull Restarted All Service";
     ;;
-6969) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/update.sh && chmod +x update.sh && ./update.sh && rm -f /root/update.sh ;;
+69696969696969) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/update.sh && chmod +x update.sh && ./update.sh && rm -f /root/update.sh ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
