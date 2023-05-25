@@ -180,6 +180,239 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 fi
 }
+function cek-bandwidth(){
+clear
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e        "           BANDWITH MONITOR " | lolcat
+echo -e "${BICyan}======================================${off}"
+echo -e "${IGreen}"
+echo -e "     1 ⸩   Lihat Total Bandwith Tersisa"
+
+echo -e "     2 ⸩   Tabel Penggunaan Setiap 5 Menit"
+
+echo -e "     3 ⸩   Tabel Penggunaan Setiap Jam"
+
+echo -e "     4 ⸩   Tabel Penggunaan Setiap Hari"
+
+echo -e "     5 ⸩   Tabel Penggunaan Setiap Bulan"
+
+echo -e "     6 ⸩   Tabel Penggunaan Setiap Tahun"
+
+echo -e "     7 ⸩   Tabel Penggunaan Tertinggi"
+
+echo -e "     8 ⸩   Statistik Penggunaan Setiap Jam"
+
+echo -e "     9 ⸩   Lihat Penggunaan Aktif Saat Ini"
+
+echo -e "    10 ⸩   Lihat Trafik Penggunaan Aktif Saat Ini [5s]"
+
+echo -e "     x ⸩   Menu"
+echo -e "${off}"
+echo -e "${BICyan}======================================${off}"
+echo -e "${IGreen}"
+read -p "     [#]  Masukkan Nomor :  " noo
+echo -e "${off}"
+
+case $noo in
+1)
+echo -e "${BICyan}======================================${off}"
+echo -e "    TOTAL BANDWITH SERVER TERSISA"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+2)
+echo -e "${BICyan}======================================${off}"
+echo -e "  PENGGUNAAN BANDWITH SETIAP 5 MENIT"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat -5
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+3)
+echo -e "${BICyan}======================================${off}"
+echo -e "    PENGGUNAAN BANDWITH SETIAP JAM"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat -h
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+4)
+echo -e "${BICyan}======================================${off}"
+echo -e "   PENGGUNAAN BANDWITH SETIAP HARI"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat -d
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+5)
+echo -e "${BICyan}======================================${off}"
+echo -e "   PENGGUNAAN BANDWITH SETIAP BULAN"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat -m
+
+echo -e ""
+echo -e "${cyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+6)
+echo -e "${BICyan}======================================${off}"
+echo -e "   PENGGUNAAN BANDWITH SETIAP TAHUN"
+echo -e "${cyan}======================================${off}"
+echo -e ""
+
+vnstat -y
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+7)
+echo -e "${BICyan}======================================${off}"
+echo -e "    PENGGUNAAN BANDWITH TERTINGGI"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat -t
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+8)
+echo -e "${BICyan}======================================${off}"
+echo -e " GRAFIK BANDWITH TERPAKAI SETIAP JAM"
+echo -e "${BICyan}======================================${off}"
+echo -e ""
+
+vnstat -hg
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+9)
+echo -e "${BICyan}======================================${off}"
+echo -e "  LIVE PENGGUNAAN BANDWITH SAAT INI"
+echo -e "${BICyan}======================================${off}"
+echo -e " ${IGreen}CTRL+C Untuk Berhenti!${off}"
+echo -e ""
+
+vnstat -l
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+10)
+echo -e "${BICyan}======================================${off}"
+echo -e "   LIVE TRAFIK PENGGUNAAN BANDWITH "
+echo -e "${cyan}======================================${off}"
+echo -e ""
+
+vnstat -tr
+
+echo -e ""
+echo -e "${BICyan}======================================${off}"
+echo -e "$baris2 $NC|"
+;;
+
+x)
+sleep 1
+menu
+;;
+
+*)
+sleep 1
+echo -e "${IRed}Nomor Yang Anda Masukkan Salah!${off}"
+;;
+esac
+read -n 1 -s -r -p "Press any key to back on menu"
+
+menu
+}
+function limitspeed(){
+clear
+Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
+Info="${Green_font_prefix}[ON]${Font_color_suffix}"
+Error="${Red_font_prefix}[OFF]${Font_color_suffix}"
+cek=$(cat /home/limit)
+NIC=$(ip -o $ANU -4 route show to default | awk '{print $5}');
+function start () {
+echo -e "Limit Speed All Service"
+read -p "Set maximum download rate (in Kbps): " down
+read -p "Set maximum upload rate (in Kbps): " up
+if [[ -z "$down" ]] && [[ -z "$up" ]]; then
+echo > /dev/null 2>&1
+else
+echo "Start Configuration"
+sleep 0.5
+wondershaper -a $NIC -d $down -u $up > /dev/null 2>&1
+systemctl enable --now wondershaper.service
+echo "start" > /home/limit
+echo "Done"
+fi
+}
+function stop () {
+wondershaper -ca $NIC
+systemctl stop wondershaper.service
+echo "Stop Configuration"
+sleep 0.5
+echo > /home/limit
+echo "Done"
+}
+if [[ "$cek" = "start" ]]; then
+sts="${Info}"
+else
+sts="${Error}"
+fi
+clear
+echo -e "=================================="
+echo -e "    Limit Bandwidth Speed $sts    "
+echo -e "=================================="
+echo -e "[1]. Start Limit"
+echo -e "[2]. Stop Limit"
+echo -e "==============================="
+read -rp "Please Enter The Correct Number : " -e num
+if [[ "$num" = "1" ]]; then
+start
+elif [[ "$num" = "2" ]]; then
+stop
+else
+clear
+echo " You Entered The Wrong Number"
+menu
+fi
+}
 function genssl(){
 clear
 systemctl stop nginx
@@ -297,15 +530,15 @@ case $opt in
 6) clear ; menu-socks ;;
 7) clear ; cek-bandwidth ;;
 8) clear ; limitspeed ;;
-007) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/cek-bandwidth.sh && chmod +x cek-bandwidth.sh && ./cek-bandwidth.sh && rm -f /root/cek-bandwidth.sh ;;
-008) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/limitspeed.sh && chmod +x limitspeed.sh && ./limitspeed.sh && rm -f /root/limitspeed.sh ;;
+#007) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/cek-bandwidth.sh && chmod +x cek-bandwidth.sh && ./cek-bandwidth.sh && rm -f /root/cek-bandwidth.sh ;;
+#008) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/limitspeed.sh && chmod +x limitspeed.sh && ./limitspeed.sh && rm -f /root/limitspeed.sh ;;
 9) clear ; addhost ;;
 10) clear ; menu-bckp ;;
 11) clear ; genssl ;;
 12) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
     clear; echo -e "${OKEY} Successfull Restarted All Service";
     ;;
-069) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/update.sh && chmod +x update.sh && ./update.sh && rm -f /root/update.sh ;;
+#069) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/update.sh && chmod +x update.sh && ./update.sh && rm -f /root/update.sh ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
