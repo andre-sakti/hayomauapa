@@ -131,7 +131,7 @@ locality=ID
 organization=None
 organizationalunit=None
 commonname=None
-email=bahenol@janda
+email=andre@sakti
 
 # simple password minimal
 curl -sS https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
@@ -305,7 +305,7 @@ echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 cat> /etc/issue.net << END
 <font color="red"><b>============================</b></font><br> 
-<font color="white"><b>         JANDA_BAHENOL         </b></font><br> 
+<font color="white"><b>        Tunneling_Script       </b></font><br> 
 <font color="red"><b>============================</b></font>
 END
 echo -e "[ ${green}INFO$NC ] Set iptables"
