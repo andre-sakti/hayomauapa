@@ -299,7 +299,7 @@ echo -e "[ ${green}INFO$NC ] Config file at /usr/local/ddos/ddos.conf"
 # banner /etc/issue.net
 sleep 1
 echo -e "[ ${green}INFO$NC ] Settings banner"
-wget -q -O /etc/issue.net "https://raw.githubusercontent.com/andre-sakti/hayomauapa/main/banner/issue.net"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/andre-sakti/hayomauapa/main/issue.net"
 chmod +x /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
