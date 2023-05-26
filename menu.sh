@@ -359,7 +359,6 @@ esac
 read -n 1 -s -r -p "Press any key to back on menu"
 
 menu
-
 }
 function limitspeed(){
 clear
@@ -412,11 +411,9 @@ stop
 else
 clear
 echo " You Entered The Wrong Number"
-fi
 read -n 1 -s -r -p "Press any key to back on menu"
-
 menu
-
+fi
 }
 function genssl(){
 clear
