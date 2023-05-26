@@ -359,6 +359,7 @@ esac
 read -n 1 -s -r -p "Press any key to back on menu"
 
 menu
+fi
 }
 function limitspeed(){
 clear
@@ -396,13 +397,14 @@ else
 sts="${Error}"
 fi
 clear
-echo -e "=================================="
-echo -e "    Limit Bandwidth Speed $sts    "
-echo -e "=================================="
-echo -e "[1]. Start Limit"
-echo -e "[2]. Stop Limit"
-echo -e "==============================="
-read -rp "Please Enter The Correct Number : " -e num
+echo -e " =============================="
+echo -e "     Limit Bandwidth Speed         "
+echo -e " =============================="
+echo -e " Status $sts"
+echo -e "  1. Start Limit"
+echo -e "  2. Stop Limit"
+echo -e " Press CTRL+C to return"
+read -rp " Please Enter The Correct Number : " -e num
 if [[ "$num" = "1" ]]; then
 start
 elif [[ "$num" = "2" ]]; then
@@ -410,7 +412,11 @@ stop
 else
 clear
 echo " You Entered The Wrong Number"
+fi
+read -n 1 -s -r -p "Press any key to back on menu"
+
 menu
+
 fi
 }
 function genssl(){
