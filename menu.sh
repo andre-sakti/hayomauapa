@@ -226,6 +226,7 @@ vnstat
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 2)
@@ -239,6 +240,7 @@ vnstat -5
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 3)
@@ -252,6 +254,7 @@ vnstat -h
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 4)
@@ -265,6 +268,7 @@ vnstat -d
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 5)
@@ -278,6 +282,7 @@ vnstat -m
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 6)
@@ -291,6 +296,7 @@ vnstat -y
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 7)
@@ -304,6 +310,7 @@ vnstat -t
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 8)
@@ -317,6 +324,7 @@ vnstat -hg
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 9)
@@ -331,7 +339,7 @@ vnstat -l
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
-echo "Script Mod By Andre Sakti"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 10)
@@ -345,7 +353,7 @@ vnstat -tr
 echo -e ""
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e "$baris2 $yy|"
-echo "Script Mod By Andre Sakti"
+echo -e "Script Mod By Andre Sakti"
 ;;
 
 11)
