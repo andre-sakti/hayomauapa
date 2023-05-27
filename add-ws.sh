@@ -233,6 +233,7 @@ echo -e "Link GRPC : ${vmesslink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Script Mod By Andre Sakti"
 echo "" | tee -a /etc/log-create-user.log
 rm /etc/xray/$user-tls.json > /dev/null 2>&1
 rm /etc/xray/$user-none.json > /dev/null 2>&1
