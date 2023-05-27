@@ -183,10 +183,10 @@ fi
 function cek-bandwidth(){
 clear
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e        "           BANDWITH MONITOR " | lolcat
-echo -e "${BICyan}======================================${off}"
-echo -e "${IGreen}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                   BANDWIDTH MONITOR                           \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${wh}"
 echo -e "     1 ⸩   Lihat Total Bandwith Tersisa"
 
 echo -e "     2 ⸩   Tabel Penggunaan Setiap 5 Menit"
@@ -207,153 +207,155 @@ echo -e "     9 ⸩   Lihat Penggunaan Aktif Saat Ini"
 
 echo -e "    10 ⸩   Lihat Trafik Penggunaan Aktif Saat Ini [5s]"
 
-echo -e "     x ⸩   Menu"
+echo -e "    11 ⸩   Menu"
 echo -e "${off}"
-echo -e "${BICyan}======================================${off}"
-echo -e "${IGreen}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "${wh}"
 read -p "     [#]  Masukkan Nomor :  " noo
 echo -e "${off}"
 
 case $noo in
 1)
-echo -e "${BICyan}======================================${off}"
-echo -e "    TOTAL BANDWITH SERVER TERSISA"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m              TOTAL BANDWIDTH SERVER TERSISA                   \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 2)
-echo -e "${BICyan}======================================${off}"
-echo -e "  PENGGUNAAN BANDWITH SETIAP 5 MENIT"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m              PENGGUNAAN BANDWIDTH SETIAP 5 MENIT              \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -5
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 3)
-echo -e "${BICyan}======================================${off}"
-echo -e "    PENGGUNAAN BANDWITH SETIAP JAM"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                PENGGUNAAN BANDWIDTH SETIAP JAM                \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -h
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 4)
-echo -e "${BICyan}======================================${off}"
-echo -e "   PENGGUNAAN BANDWITH SETIAP HARI"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                PENGGUNAAN BANDWIDTH SETIAP HARI               \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -d
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 5)
-echo -e "${BICyan}======================================${off}"
-echo -e "   PENGGUNAAN BANDWITH SETIAP BULAN"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                PENGGUNAAN BANDWIDTH SETIAP BULAN              \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -m
 
 echo -e ""
-echo -e "${cyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 6)
-echo -e "${BICyan}======================================${off}"
-echo -e "   PENGGUNAAN BANDWITH SETIAP TAHUN"
-echo -e "${cyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                PENGGUNAAN BANDWIDTH SETIAP TAHUN              \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -y
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 7)
-echo -e "${BICyan}======================================${off}"
-echo -e "    PENGGUNAAN BANDWITH TERTINGGI"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                 PENGGUNAAN BANDWIDTH TERTINGGI                \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -t
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 8)
-echo -e "${BICyan}======================================${off}"
-echo -e " GRAFIK BANDWITH TERPAKAI SETIAP JAM"
-echo -e "${BICyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m              GRAFIK BANDWIDTH TERPAKAI SETIAP JAM             \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -hg
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
 ;;
 
 9)
-echo -e "${BICyan}======================================${off}"
-echo -e "  LIVE PENGGUNAAN BANDWITH SAAT INI"
-echo -e "${BICyan}======================================${off}"
-echo -e " ${IGreen}CTRL+C Untuk Berhenti!${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m               LIVE PENGGUNAAN BANDWIDTH SAAT INI              \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " ${GREEN}CTRL+C Untuk Berhenti!${off}"
 echo -e ""
 
 vnstat -l
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
+echo "Script Mod By Andre Sakti"
 ;;
 
 10)
-echo -e "${BICyan}======================================${off}"
-echo -e "   LIVE TRAFIK PENGGUNAAN BANDWITH "
-echo -e "${cyan}======================================${off}"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                LIVE TRAFIK PENGGUNAAN BANDWIDTH               \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
 vnstat -tr
 
 echo -e ""
-echo -e "${BICyan}======================================${off}"
-echo -e "$baris2 $NC|"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "$baris2 $yy|"
+echo "Script Mod By Andre Sakti"
 ;;
 
-x)
+11)
 sleep 1
 menu
 ;;
 
 *)
 sleep 1
-echo -e "${IRed}Nomor Yang Anda Masukkan Salah!${off}"
+echo -e "${m}Nomor Yang Anda Masukkan Salah!${yy}"
 ;;
 esac
 read -n 1 -s -r -p "Press any key to back on menu"
@@ -396,9 +398,9 @@ else
 sts="${Error}"
 fi
 clear
-echo -e " =============================="
-echo -e "     Limit Bandwidth Speed         "
-echo -e " =============================="
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
+echo -e "\E[0;41;37m                Limit Bandwidth Speed                           \E[0m"
+echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " Status $sts"
 echo -e "  1. Start Limit"
 echo -e "  2. Stop Limit"
