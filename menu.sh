@@ -344,7 +344,7 @@ echo -e "Script Mod By Andre Sakti"
 
 10)
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
-echo -e "\E[0;41;37m                LIVE TRAFIK PENGGUNAAN BANDWIDTH               \E[0m"
+echo -e "\E[0;41;37m                LIVE TRAFIK PENGGUNAAN BANDWIDTH              \E[0m"
 echo -e "\e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 
