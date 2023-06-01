@@ -200,7 +200,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-    sed -i "/### $user/c\### $user $exp4" /etc/xray/config.json
+    sed -i "/### $user/c\### $user $exp4 $pwd $domain $vnstat" /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -209,7 +209,24 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo ""
     echo " Client Name : $user"
     echo " Expired On  : $exp4"
-    echo " Expired On  : $pwd"
+    echo " Domain      : $domain"
+    echo " Password    : $pwd"
+    echo " Bandwidth    : $vnstat"
+    echo "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
+    echo "Path : /trojan-ws" | tee -a /etc/log-create-user.log
+    echo "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Expired On : $exp4" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Script Mod By Andre Sakti"
     echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
