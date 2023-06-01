@@ -200,7 +200,15 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-    sed -i "/### $user/c\### $user $exp4 $pwd $domain $vnstat" /etc/xray/config.json
+    sed -i "/### $user/c\### $user $exp4" /etc/xray/config.json
+    sed -i '/#trojanws$/a\### '"$user $exp"'\
+    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    sed -i '/#trojangrpc$/a\### '"$user $exp"'\
+    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    sed -i '/#trojantcp$/a\### '"$user $exp"'\
+    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
+    },{"password": "'""$pwd""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
     trojanlink2="trojan://${pwd}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
