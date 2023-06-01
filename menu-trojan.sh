@@ -192,7 +192,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
-    read -rp "Password: " -e pwd
     read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
@@ -216,7 +215,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo " Expired On  : $exp4"
     echo " Domain      : $domain"
     echo " Password    : $pwd"
-    echo " Bandwidth    : $vnstat"
+    echo " Bandwidth    : " vnstat -y
     echo "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
     echo "Path : /trojan-ws" | tee -a /etc/log-create-user.log
     echo "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
