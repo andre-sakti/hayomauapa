@@ -192,6 +192,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
+    read -rp "Password: " -e pwd
     read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
@@ -202,6 +203,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
     sed -i "/### $user/c\### $user $exp4 $pwd $domain $vnstat" /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
+    trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
+    trojanlink2="trojan://${pwd}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
+    trojanlink="trojan://${pwd}@${domain}:443#${user}"
+    trojanlink1="trojan://${pwd}@${doman}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo " Trojan  Account Was Successfully Renewed"
