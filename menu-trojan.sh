@@ -209,6 +209,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo ""
     echo " Client Name : $user"
     echo " Expired On  : $exp4"
+    echo " Expired On  : $pwd"
     echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
