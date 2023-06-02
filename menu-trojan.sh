@@ -292,44 +292,19 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     menu
     else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
-    },{"user ": "'""$user""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+    },{"user": "'""$user""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-    },{"user ": "'""$user""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+    },{"user": "'""$user""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojantcp$/a\### '"$user $exp"'\
-    },{"user ": "'""$user""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+    },{"user": "'""$user""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-    },{"user ": "'""$user""'","flow": "'""xtls-rprx-direct""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+    },{"user": "'""$user""'","flow": "'""xtls-rprx-direct""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
     trojanlink2="trojan://${pwd}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
     trojanlink="trojan://${pwd}@${domain}:443#${user}"
     trojanlink1="trojan://${pwd}@${doman}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
     clear
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo " Trojan  Account Was Successfully Renewed"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo ""
-    echo " Client Name : $user"
-    echo " Expired On  : $exp4"
-    echo " Domain      : $domain"
-    echo " Password    : $pwd"
-    echo " Bandwidth    : " vnstat -y
-    echo "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
-    echo "Path : /trojan-ws" | tee -a /etc/log-create-user.log
-    echo "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
-    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
-    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
-    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
-    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
-    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo "Expired On : $exp4" | tee -a /etc/log-create-user.log
-    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo "Script Mod By Andre Sakti"
-    echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
@@ -355,6 +330,31 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "Script Mod By Andre Sakti"
     echo ""
     read -n 1 -s -r -p "Press any key to back on menu"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo " Trojan  Account Was Successfully Renewed"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+    echo " Client Name : $user"
+    echo " Expired On  : $exp4"
+    echo " Domain      : $domain"
+    echo " Password    : $pwd"
+    echo " Bandwidth    : " vnstat -y
+    echo "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
+    echo "Path : /trojan-ws" | tee -a /etc/log-create-user.log
+    echo "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Expired On : $exp4" | tee -a /etc/log-create-user.log
+    echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+    echo "Script Mod By Andre Sakti"
+    echo ""
     menu
   fi
 }
