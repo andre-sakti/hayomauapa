@@ -248,18 +248,20 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     menu
     else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
-    },{USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{ USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-    },{USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{ USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     sed -i '/#trojantcp$/a\### '"$user $exp"'\
-    },{USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{ USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-    },{USER:"'"$user"'" >>> flow:"'"xtls-rprx-direct"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{ USER:"'"$user"'" >>> flow:"'"xtls-rprx-direct"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
-    trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
-    trojanlink2="trojan://${pwd}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
-    trojanlink="trojan://${pwd}@${domain}:443#${user}"
-    trojanlink1="trojan://${pwd}@${doman}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
+    trojanlink3="trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
+    trojanlink2="trojan://${pwd}@${Domen}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
+    trojanlink="trojan://${pwd}@${Domen}:443#${user}"
+    trojanlink1="trojan://${pwd}@${Domen}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
+    clear
+    Domen=$(cat /etc/xray/domain)
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
