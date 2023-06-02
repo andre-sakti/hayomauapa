@@ -553,5 +553,5 @@ case $opt in
 #069) clear ; wget https://raw.githubusercontent.com/andre-sakti/ranjau-darate/main/update.sh && chmod +x update.sh && ./update.sh && rm -f /root/update.sh ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
+#*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
 esac
