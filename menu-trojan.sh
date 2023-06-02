@@ -272,7 +272,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo " Expired On  : $exp4"
     echo " Domain      : $domain"
     echo " Password    : $pwd"
-    echo " Bandwidth    : " vnstat -y
     echo "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
     echo "Path : /trojan-ws" | tee -a /etc/log-create-user.log
     echo "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
