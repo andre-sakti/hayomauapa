@@ -158,7 +158,6 @@ fi
 rm -rf /tmp/ipxray.txt
 done
 rm -rf /tmp/other.txt
-
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -169,7 +168,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\\E[0;41;36m            Renew Vless            \E[0m"
+        echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 		echo ""
 		echo "You have no existing clients!"
@@ -182,7 +181,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 
 	clear
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\\E[0;41;36m            Renew Vless            \E[0m"
+    echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
   	grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
@@ -205,7 +204,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo " Vless Account Was Successfully Renewed"
+    echo " Trojan  Account Was Successfully Renewed"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
     echo " Client Name : $user"
@@ -223,7 +222,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
+        echo -e "\\E[0;41;36m      User Password Trojan       \E[0m"
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 		echo ""
 		echo "You have no existing clients!"
@@ -236,7 +235,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 
 	clear
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
+    echo -e "\\E[0;41;36m      User Password Trojan       \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
   	grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 1-3 | column -t | sort | uniq
@@ -266,7 +265,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
-    echo -e "Host/IP : $Domen"
+    echo -e "Host/IP : ${Domen}"
     echo -e "port : 443" | tee -a /etc/log-create-user.log
     echo -e "Key : ${pwd}" | tee -a /etc/log-create-user.log
     echo -e "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
@@ -294,7 +293,7 @@ clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\\E[0;41;36m       Delete Vless Account        \E[0m"
+        echo -e "\\E[0;41;36m       Delete Trojan  Account        \E[0m"
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 		echo ""
 		echo "You have no existing clients!"
@@ -306,7 +305,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 
 	clear
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\\E[0;41;36m       Delete Vless Account        \E[0m"
+    echo -e "\\E[0;41;36m       Delete Trojan  Account        \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo "  User       Expired  " 
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -323,7 +322,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo " VLESS Account Deleted Successfully"
+    echo " Trojan  Account Deleted Successfully"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo " Client Name : $user"
     echo " Expired On  : $exp"
@@ -336,11 +335,11 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 }
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "       ${BIWhite}${UWhite}Vless${NC}"
+echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Account Vless     "
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Trojan      "
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Account Trojan      "
+echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Account Trojan      "
 echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY     "
 echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Cek Password User XRAY     "
 echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
