@@ -263,8 +263,16 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 }
 function cekpassws(){
 clear
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+sspwd=$(cat /etc/xray/passwd)
+clear
+source /var/lib/scrz-prem/ipvps.conf
+if [[ "$IP" = "" ]]; then
+domain=$(cat /etc/xray/domain)
+else
+domain=$IP
+fi
+tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 		clear
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
