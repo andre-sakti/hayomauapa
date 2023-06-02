@@ -192,15 +192,113 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
-    grep -E "$pwd","$user" "/etc/xray/config.json"
+    read -p "Expired (days): " masaaktif
+    exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    now=$(date +%Y-%m-%d)
+    d1=$(date -d "$exp" +%s)
+    d2=$(date -d "$now" +%s)
+    exp2=$(( (d1 - d2) / 86400 ))
+    exp3=$(($exp2 + $masaaktif))
+    exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
+    sed -i "/### $user/c\### $user $exp4" /etc/xray/config.json
+    systemctl restart xray > /dev/null 2>&1
+    clear
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo " Trojan  Account Was Successfully Renewed"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+    echo " Client Name : $user"
+    echo " Expired On  : $exp4"
+    echo ""
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+    read -n 1 -s -r -p "Press any key to back on menu"
+    menu
+  fi
+}
+function delws() {
+clear
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\\E[0;41;36m       Delete Trojan  Account        \E[0m"
+        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+		echo ""
+		echo "You have no existing clients!"
+		echo ""
+		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+		read -n 1 -s -r -p "Press any key to back on menu"
+        menu
+	fi
+
+	clear
+	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\\E[0;41;36m       Delete Trojan  Account        \E[0m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo "  User       Expired  " 
+	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+	grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+    echo ""
+    red "tap enter to go back"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+	read -rp "Input Username : " user
+    if [ -z $user ]; then
+    menu
+    else
+    exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
+    systemctl restart xray > /dev/null 2>&1
+    clear
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo " Trojan  Account Deleted Successfully"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo " Client Name : $user"
+    echo " Expired On  : $exp"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+    read -n 1 -s -r -p "Press any key to back on menu"
+    
+    menu
+    fi
+}
+function cekpassws(){
+clear
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+		clear
+        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
+        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+		echo ""
+		echo "You have no existing clients!"
+		echo ""
+		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo ""
+        read -n 1 -s -r -p "Press any key to back on menu"
+        menu
+	fi
+
+	clear
+	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+  	grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 1-3 | column -t | sort | uniq
+    echo ""
+    red "tap enter to go back"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+	read -rp "Input Username : " user
+    if [ -z $user ]; then
+    menu
+    else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
-    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"user ": "'""$user""'">>>>>>>>>>>>>>"password ": "'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"user ": "'""$user""'">>>>>>>>>>>>>>"password ": "'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojantcp$/a\### '"$user $exp"'\
-    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"user ": "'""$user""'">>>>>>>>>>>>>>"password ": "'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-    },{"password": "'""$pwd""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"user ": "'""$user""'","flow": "'""xtls-rprx-direct""'">>>>>>>>>>>>>>"password ": "'""$pwd""'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
     trojanlink2="trojan://${pwd}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
@@ -260,51 +358,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     menu
   fi
 }
-function delws() {
-clear
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\\E[0;41;36m       Delete Trojan  Account        \E[0m"
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-		echo ""
-		echo "You have no existing clients!"
-		echo ""
-		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-		read -n 1 -s -r -p "Press any key to back on menu"
-        menu
-	fi
-
-	clear
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\\E[0;41;36m       Delete Trojan  Account        \E[0m"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo "  User       Expired  " 
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-	grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
-    echo ""
-    red "tap enter to go back"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-	read -rp "Input Username : " user
-    if [ -z $user ]; then
-    menu
-    else
-    exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-    sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
-    systemctl restart xray > /dev/null 2>&1
-    clear
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo " Trojan  Account Deleted Successfully"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo " Client Name : $user"
-    echo " Expired On  : $exp"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo ""
-    read -n 1 -s -r -p "Press any key to back on menu"
-    
-    menu
-    fi
-}
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
@@ -313,6 +366,8 @@ echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Trojan      "
 echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Account Trojan      "
 echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Account Trojan      "
 echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Cek Password User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
 echo ""
@@ -323,7 +378,8 @@ case $opt in
 2) clear ; delws ;;
 3) clear ; renewws;;
 4) clear ; cekws ;;
-0) clear ; menu ;;
+5) clear ; cekpassws ;;
+6) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
