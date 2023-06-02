@@ -261,29 +261,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     trojanlink="trojan://${pwd}@${domain}:443#${user}"
     trojanlink1="trojan://${pwd}@${doman}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
     clear
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
-    echo -e "Host/IP : ${domain}" | tee -a /etc/log-create-user.log
-    echo -e "port : ${tr}" | tee -a /etc/log-create-user.log
-    echo -e "Key : ${pwd}" | tee -a /etc/log-create-user.log
-    echo -e "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
-    echo -e "Path : /trojan-ws" | tee -a /etc/log-create-user.log
-    echo -e "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Script Mod By Andre Sakti"
-    echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo " Trojan  Account Was Successfully Renewed"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
