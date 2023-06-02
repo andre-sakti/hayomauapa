@@ -299,7 +299,6 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
     if [ -z $user ]; then
     menu
     else
-    read -rp
     sed -i '/#trojanws$/a\### '"$user $exp"'\
     },{user:"'""$user""'">>> pass:"'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
@@ -338,7 +337,6 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Script Mod By Andre Sakti"
     echo ""
-    read -n 1 -s -r -p "Press any key to back on menu"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo " Trojan  Account Was Successfully Renewed"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -364,6 +362,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
     echo "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo "Script Mod By Andre Sakti"
     echo ""
+    read -n 1 -s -r -p "Press any key to back on menu"
     menu
   fi
 }
