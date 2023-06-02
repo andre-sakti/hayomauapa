@@ -152,13 +152,13 @@ read -rp "Password: " -e pwd
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojanws$/a\### '"$user $exp"'\
-},{"user ": "'""$user""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+},{"user": "'""$user""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
 sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-},{"user ": "'""$user""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+},{"user": "'""$user""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
 sed -i '/#trojantcp$/a\### '"$user $exp"'\
-},{"user ": "'""$user""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+},{"user": "'""$user""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
 sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-},{"user ": "'""$user""'","flow": "'""xtls-rprx-direct""'">>"password ": "'""$pwd""'"' /etc/xray/config.json
+},{"user": "'""$user""'","flow": "'""xtls-rprx-direct""'">>"pass": "'""$pwd""'"' /etc/xray/config.json
 
 systemctl restart xray
 trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
