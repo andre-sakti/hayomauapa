@@ -363,7 +363,6 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
     read -n 1 -s -r -p "Press any key to back on menu"
     menu
   fi
-}
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
