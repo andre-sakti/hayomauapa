@@ -192,6 +192,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
+    grep -E "$pwd","$user" "/etc/xray/config.json"
     sed -i '/#trojanws$/a\### '"$user $exp"'\
     },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
