@@ -218,16 +218,9 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
   fi
 }
 function cekpassws(){
-sspwd=$(cat /etc/xray/passwd)
 clear
-source /var/lib/scrz-prem/ipvps.conf
-if [[ "$IP" = "" ]]; then
-domain=$(cat /etc/xray/domain)
-else
-domain=$IP
-fi
-tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\\E[0;41;36m            Renew Vless            \E[0m"
@@ -246,7 +239,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
     echo -e "\\E[0;41;36m            Renew Vless            \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
-  	grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+  	grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 1-3 | column -t | sort | uniq
     echo ""
     red "tap enter to go back"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -255,13 +248,13 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
     menu
     else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
-    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"USER":"'""$user""'" >>> "PASS":"'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"USER":"'""$user""'" >>> "PASS":"'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojantcp$/a\### '"$user $exp"'\
-    },{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"USER":"'""$user""'" >>> "PASS":"'""$pwd""'"' /etc/xray/config.json
     sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-    },{"password": "'""$pwd""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/config.json
+    },{"USER":"'""$user""'" >>> "flow":"'""xtls-rprx-direct""'" >>> "PASS":"'""$pwd""'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     trojanlink3="trojan://${pwd}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
     trojanlink2="trojan://${pwd}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
