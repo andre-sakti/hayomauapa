@@ -237,7 +237,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "\\E[0;41;36m      User Password Trojan       \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo ""
+    echo -e "Jangan lupa input user dan password dengan benar."
   	grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 1-3 | column -t | sort | uniq
     echo ""
     red "tap enter to go back"
@@ -248,13 +248,13 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     menu
     else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
-    },{USER|TROJAN:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{TROJAN|USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-    },{USER|TROJAN:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{TROJAN|USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     sed -i '/#trojantcp$/a\### '"$user $exp"'\
-    },{USER|TROJAN:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{TROJAN|USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-    },{USER|TROJAN:"'"$user"'" >>> flow:"'"xtls-rprx-direct"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{TROJAN|USER:"'"$user"'" >>> flow:"'"xtls-rprx-direct"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     trojanlink3="trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
     trojanlink2="trojan://${pwd}@${Domen}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
@@ -274,13 +274,13 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "Path : /trojan-ws" | tee -a /etc/log-create-user.log
     echo -e "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
+    echo -e "Link WS : trojan://${pwd}@${Domen}:443#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
+    echo -e "Link xTLS : trojan://${pwd}@${Domen}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
+    echo -e "Link WS : trojan://${pwd}@${Domen}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
+    echo -e "Link GRPC : trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
