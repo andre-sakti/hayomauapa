@@ -244,10 +244,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     red "tap enter to go back"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
-    if [ -z $user ]; then
-    menu
 	read -rp "Input Existing Password: " pwd
-    if [ -z $pwd ]; then
+    if [ -z $user ]; then
     menu
     else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
