@@ -263,8 +263,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 }
 function cekpassws(){
 clear
-sspwd=$(cat /etc/xray/passwd)
-clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
@@ -357,6 +355,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     read -n 1 -s -r -p "Press any key to back on menu"
     menu
   fi
+}
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
