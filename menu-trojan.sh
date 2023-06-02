@@ -267,7 +267,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
-    echo -e "Host/IP : ${Domen}"
+    echo -e "Host/IP : ${Domen}" | tee -a /etc/log-create-user.log
     echo -e "port : 443" | tee -a /etc/log-create-user.log
     echo -e "Key : ${pwd}" | tee -a /etc/log-create-user.log
     echo -e "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
