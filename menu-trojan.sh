@@ -248,13 +248,13 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     menu
     else
     sed -i '/#trojanws$/a\### '"$user $exp"'\
-    },{TROJAN|USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{"password": "'""$pwd""'" >>> "email": "'""$user""'"' /etc/xray/config.json
     sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-    },{TROJAN|USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{"password": "'""$pwd""'" >>> "email": "'""$user""'"' /etc/xray/config.json
     sed -i '/#trojantcp$/a\### '"$user $exp"'\
-    },{TROJAN|USER:"'"$user"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{"password": "'""$pwd""'" >>> "email": "'""$user""'"' /etc/xray/config.json
     sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
-    },{TROJAN|USER:"'"$user"'" >>> flow:"'"xtls-rprx-direct"'" >>> PASS:"'"$pwd"'"' /etc/xray/config.json
+    },{"password": "'""$pwd""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/config.json
     systemctl restart xray > /dev/null 2>&1
     trojanlink3="trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
     trojanlink2="trojan://${pwd}@${Domen}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
