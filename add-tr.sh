@@ -152,11 +152,11 @@ read -rp "Password: " -e pwd
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojanws$/a\### '"$user $exp"'\
-},{"password": "'""$pwd""'" >>> "email": "'""$user""'"' /etc/xray/config.json
+},{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojangrpc$/a\### '"$user $exp"'\
-},{"password": "'""$pwd""'" >>> "email": "'""$user""'"' /etc/xray/config.json
+},{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojantcp$/a\### '"$user $exp"'\
-},{"password": "'""$pwd""'" >>> "email": "'""$user""'"' /etc/xray/config.json
+},{"password": "'""$pwd""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
 },{"password": "'""$pwd""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/config.json
 
