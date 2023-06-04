@@ -256,8 +256,8 @@ clear
 	echo ""
 	read -n 1 -s -r -p "Press any key to back on menu"
 	menu-trojan
-	fi
-	clear
+#	fi
+#	clear
 
 	read -rp "Input Existing Password: " pwd
 		PASSWORD_EXISTS=$(grep -w $pwd /etc/xray/config.json | wc -l)
