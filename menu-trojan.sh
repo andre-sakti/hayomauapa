@@ -244,20 +244,20 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "$yy    [ ${BIWhite}Jangan lupa input USER dan PASSWORD dengan benar!!! $yy]"
     echo ""
 	read -rp "Input Username : " user
-			CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+	CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '0' ]]; then
+	if [[ ${CLIENT_EXISTS} == '0' ]]; then
 clear
-		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-		echo -e "\E[44;1;39m    WRONG TYPE USER TROJAN   \E[0m"
-		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-			echo ""
-			echo "A client with the specified name was is not available, please choose available name."
-			echo ""
-			read -n 1 -s -r -p "Press any key to back on menu"
-			menu-vless
-		fi
-	done
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\E[44;1;39m    WRONG TYPE USER TROJAN   \E[0m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+	echo ""
+	echo "A client with the specified name was is not available, please choose available name."
+	echo ""
+	read -n 1 -s -r -p "Press any key to back on menu"
+	menu-trojan
+	fi
+	clear
 
 #	read -rp "Input Existing Password: " pwd
     if [ -z $user ]; then
