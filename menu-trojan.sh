@@ -259,14 +259,28 @@ clear
 	fi
 	clear
 
-#	read -rp "Input Existing Password: " pwd
+	read -rp "Input Existing Password: " pwd
+		PASSWORD_EXISTS=$(grep -w $pwd /etc/xray/config.json | wc -l)
+
+	if [[ ${PASSWORD_EXISTS} == '0' ]]; then
+clear
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\E[44;1;39m      WRONG TYPE PASSWORD TROJAN    \E[0m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+	echo ""
+	echo "A client with the specified password is not available, please choose available password."
+	echo ""
+	read -n 1 -s -r -p "Press any key to back on menu"
+	menu-trojan
+	fi
+	clear
     if [ -z $user ]; then
     menu
     else
     clear
     Domen=$(cat /etc/xray/domain)
     exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-    pwd=$(grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+#    pwd=$(grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
