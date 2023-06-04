@@ -259,14 +259,14 @@ clear
 	fi
 	clear
 
-	read -rp "Input Existing Password: " pwd
+#	read -rp "Input Existing Password: " pwd
     if [ -z $user ]; then
     menu
     else
     clear
     Domen=$(cat /etc/xray/domain)
     exp=$(grep -wE "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-#    pwd=$(grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    pwd=$(grep -E "$pwd","$user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
