@@ -241,7 +241,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo ""
     red "tap enter to go back"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "${BIWhite}  [ Jangan lupa input User dan Password yang dengan benar!!! ]${NC}"
+    echo -e "$yy    [ ${BIWhite}Jangan lupa input USER dan PASSWORD dengan benar!!! $yy]"
+    echo ""
 	read -rp "Input Username : " user
 	read -rp "Input Existing Password: " pwd
     if [ -z $user ]; then
@@ -269,7 +270,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Link GRPC : trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+    echo -e "Expired On : ${exp}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Script Mod By Andre Sakti"
     echo ""
