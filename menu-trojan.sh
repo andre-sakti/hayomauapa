@@ -267,11 +267,11 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Link xTLS : trojan://${pwd}@${Domen}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link WS : trojan://${pwd}@${Domen}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
+    echo -e "Link WS : trojan://${pwd}@${Domen}:443?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Link GRPC : trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
+    echo -e "Link GRPC : trojan://${pwd}@${Domen}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Expired On :" '"$user $exp"' | tee -a /etc/log-create-user.log
+    echo -e "Expired On :" " $user $exp" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Script Mod By Andre Sakti"
     echo ""
