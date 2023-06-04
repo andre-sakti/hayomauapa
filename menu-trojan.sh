@@ -249,10 +249,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	if [[ ${CLIENT_EXISTS} == '0' ]]; then
 clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[44;1;39m    WRONG TYPE USER TROJAN   \E[0m"
+    echo -e "\E[44;1;39m       WRONG TYPE USER TROJAN      \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo ""
-	echo "A client with the specified name was is not available, please choose available name."
+	echo "A client with the specified name is not available, please choose available name."
 	echo ""
 	read -n 1 -s -r -p "Press any key to back on menu"
 	menu-trojan
