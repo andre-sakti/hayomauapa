@@ -250,7 +250,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     else
     clear
     Domen=$(cat /etc/xray/domain)
-    grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+    exp=$(cat /etc/log-create-user.log)
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
@@ -271,8 +271,12 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Link GRPC : trojan://${pwd}@${Domen}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-    echo -e "Expired On :" "$user $exp" | tee -a /etc/log-create-user.log
-    echo -e "Expired On :" "$masaaktif" | tee -a /etc/log-create-user.log
+    echo -e "Expired On : ${exp}"
+    echo -e "Expired On : $user $exp"
+    echo -e "Expired On : $exp"
+    echo -e "Expired On : ${exp}" | tee -a /etc/log-create-user.log
+    echo -e "Expired On : $user $exp" | tee -a /etc/log-create-user.log
+    echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
     echo -e "Script Mod By Andre Sakti"
     echo ""
