@@ -247,10 +247,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
-    trojanlink3="trojan://${pwd}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
-    trojanlink2="trojan://${pwd}@${Domen}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
-    trojanlink="trojan://${pwd}@${Domen}:443#${user}"
-    trojanlink1="trojan://${pwd}@${Domen}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
     clear
     Domen=$(cat /etc/xray/domain)
     clear
