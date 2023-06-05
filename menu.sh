@@ -587,7 +587,18 @@ case $opt in
 13) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
     clear; echo -e "${OKEY} Successfull Restarted All Service";
     ;;
+14)
+sleep 1
+menu
+;;
+
+*)
+sleep 1
+echo -e "${m}Nomor Yang Anda Masukkan Salah!${yy}"
+;;
+esac
 read -n 1 -s -r -p "Press any key to back on menu"
+
 menu
 }
 export sem=$( curl -s https://raw.githubusercontent.com/andre-sakti/test/main/versions)
