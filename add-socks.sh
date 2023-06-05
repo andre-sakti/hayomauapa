@@ -153,9 +153,9 @@ xray-menu
 read -rp "Password: " -e pwd
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#socksws$/a\### '"$user $exp"'\
+sed -i '/#socksws$/a\###sckws '"$user $exp"'\
 },{"user": "'""$user""'","pass": "'""$pwd""'"' /etc/xray/config.json
-sed -i '/#socksgrpc$/a\### '"$user $exp"'\
+sed -i '/#socksgrpc$/a\###skws '"$user $exp"'\
 },{"user": "'""$user""'","pass": "'""$pwd""'"' /etc/xray/config.json
 systemctl restart xray
 cat > /home/vps/public_html/socksws-$user.txt <<-END
