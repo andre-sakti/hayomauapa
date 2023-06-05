@@ -182,7 +182,7 @@ fi
 }
 function x-bw(){
 clear
-_APISERVER=127.0.0.1:10000
+_APISERVER=127.0.0.1:10085
 _XRAY=/usr/local/bin/xray
 
 apidata () {
