@@ -742,9 +742,9 @@ d1=$(date -d "$valid" +%s)
 d2=$(date -d "$today" +%s)
 certifacate=$(((d1 - d2) / 86400))
 # TOTAL ACC CREATE VMESS WS
-vmess=$(grep -c -E "^#vmess " "/usr/local/etc/xray/config.json")
+vmess=$(grep -c -E "^#vmess " "/etc/xray/config.json")
 # TOTAL ACC CREATE  VLESS WS
-vless=$(grep -c -E "^#vless " "/usr/local/etc/xray/config.json")
+vless=$(grep -c -E "^#vless " "/etc/xray/config.json")
 # TOTAL ACC CREATE  VLESS TCP XTLS
 ssws=$(grep -c -E "^#ssws " "/etc/xray/config.json")
 # TOTAL ACC CREATE  TROJAN
@@ -802,7 +802,7 @@ echo -e "   \e[$text Upload${NC}     \e[${text}$today_rx $today_rxv      $yester
 echo -e "   \e[$text Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e " \e[$text   Ssh/Ovpn  Vmess  Vless  VlessXtls  Trojan-Ws  Trojan-Tls \e[0m "    
-echo -e " \e[$below      $total_ssh        $vmess      $vless       $xtls          $trws          $trtls \e[0m "
+echo -e " \e[$below      $total_ssh        $vmess      $vless       $tr          $trws          $trtls \e[0m "
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (•111)\e[m \e[$below xmenu\e[m"
