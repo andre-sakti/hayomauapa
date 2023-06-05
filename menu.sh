@@ -185,7 +185,7 @@ clear
 _APISERVER=127.0.0.1:10000
 _XRAY=/usr/local/bin/xray
 
-function apidata () {
+apidata () {
     local ARGS=
     if [[ $1 == "reset" ]]; then
       ARGS="-reset=true"
@@ -206,7 +206,7 @@ function apidata () {
     }'
 }
 
-function print_sum() {
+print_sum() {
     local DATA="$1"
     local PREFIX="$2"
     local SORTED=$(echo "$DATA" | grep "^${PREFIX}" | sort -r)
