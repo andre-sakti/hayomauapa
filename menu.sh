@@ -480,7 +480,7 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 fi
 }
-function xmenu(){
+function genssl(){
 clear
 systemctl stop nginx
 domain=$(cat /var/lib/scrz-prem/ipvps.conf | cut -d'=' -f2)
@@ -511,7 +511,7 @@ echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-function stop () {
+function xmenu(){
 is_root
 #pkg install ncurses-utils
 ip=$(wget -qO- ipinfo.io/ip)
