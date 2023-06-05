@@ -155,7 +155,7 @@ read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#ssws$/a\###ssws '"$user $exp"'\
 },{"password": "'""$pws""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#ssgrpc$/a\###ssws '"$user $exp"'\
+sed -i '/#ssgrpc$/a\###sss '"$user $exp"'\
 },{"password": "'""$pws""'","email": "'""$user""'"' /etc/xray/config.json
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
