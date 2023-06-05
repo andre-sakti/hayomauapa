@@ -149,13 +149,13 @@ clear
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#trojanws$/a\### '"$user $exp"'\
+sed -i '/#trojanws$/a\###trs '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#trojangrpc$/a\### '"$user $exp"'\
+sed -i '/#trojangrpc$/a\###trs '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#trojantcp$/a\### '"$user $exp"'\
+sed -i '/#trojantcp$/a\###trs '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#trojanxtls$/a\#&# '"$user $exp"'\
+sed -i '/#trojanxtls$/a\#&#trs '"$user $exp"'\
 },{"password": "'""$uuif""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/config.json
 
 
