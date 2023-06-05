@@ -752,6 +752,8 @@ ssws=$(grep -c -E "^###ssws " "/etc/xray/config.json")
 trtls=$(grep -c -E "^###trx " "/etc/xray/tcp.json")
 # TOTAL ACC CREATE  TROJAN WS TLS
 trws=$(grep -c -E "^###trs " "/etc/xray/config.json")
+# TOTAL ACC CREATE  SOCKWS
+shockws=$(grep -c -E "^###sckws " "/etc/xray/config.json")
 # TOTAL ACC CREATE OVPN SSH
 total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 # PROVIDED
@@ -802,8 +804,8 @@ echo -e "   \e[$text Download${NC}   \e[${text}$today_tx $today_txv      $yester
 echo -e "   \e[$text Upload${NC}     \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv      $month_rx $month_rxv   \e[0m"
 echo -e "   \e[$text Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e " \e[$text   Ssh/Ovpn  Vmess  Vless  VlessXtls  Trojan-Ws  Trojan-Tls \e[0m "    
-echo -e " \e[$below      $total_ssh        $vmess      $vless       $trws          $trws          $ssws \e[0m "
+echo -e " \e[$text    SSH       Vmess  Vless    Trojan-Ws   SS-WS   SOCK-WS\e[0m "    
+echo -e " \e[$below      $total_ssh        $vmess      $vless       $trws         $ssws   $shockws \e[0m "
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (•111)\e[m \e[$below xmenu\e[m"
