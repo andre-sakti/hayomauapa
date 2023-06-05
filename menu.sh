@@ -552,13 +552,13 @@ echo -e " ${On_IRed}         ${BICyan} SSH${On_IRed}: $ressh${On_IRed}"  "${BICy
 echo -e " ${On_IRed}       ${BICyan}${On_IRed}      ${BICyan}STUNNEL${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} SSH-WS${NC}${On_IRed}: $ressshws${On_IRed}              ${NC}"
 echo -e "${yl}┌──────────────────────────────────────────────────────────────┐${yl}"
 echo -e "${yl}│                                                              ${yl}│${yl}"
-echo -e "${yl}│  $yy 1$wh. SSH $wh       $yy[${wh}Menu$yy]         8$wh.  BANDWIDTH$wh        $yy[${wh}Menu$yy]   ${yl}│${yl}"
-echo -e "${yl}│  $yy 2$wh. VMESS $wh     $yy[${wh}Menu$yy]         9$wh.  Bandwidth User$wh   $yy[${wh}Menu$yy]   ${yl}│${yl}"  
-echo -e "${yl}│  $yy 3$wh. VLESS $wh     $yy[${wh}Menu$yy]         10$wh. ADD-HOST$wh         $yy[${wh}Menu$yy]   ${yl}│${yl}" 
-echo -e "${yl}│  $yy 4$wh. TROJAN $wh    $yy[${wh}Menu$yy]         11$wh. BACKUP$wh           $yy[${wh}Menu$yy]   ${yl}│${yl}" 
-echo -e "${yl}│  $yy 5$wh. SS WS $wh     $yy[${wh}Menu$yy]         12$wh. GEN SSL$wh          $yy[${wh}Menu$yy]   ${yl}│${yl}" 
-echo -e "${yl}│  $yy 6$wh. SOCK WS $wh   $yy[${wh}Menu$yy]         13$wh. RESTART SERVICE$wh  $yy[${wh}Menu$yy]   ${yl}│${yl}" 
-echo -e "${yl}│  $yy 7$wh. LIMIT SPEED$wh$yy[${wh}Menu$yy]                                        ${yl}│${yl}" 
+echo -e "${yl}│  $yy 1$wh. SSH $wh        $yy[${wh}Menu$yy]        8$wh.  BANDWIDTH$wh        $yy[${wh}Menu$yy]   ${yl}│${yl}"
+echo -e "${yl}│  $yy 2$wh. VMESS $wh      $yy[${wh}Menu$yy]        9$wh.  BANDWIDTH USER$wh   $yy[${wh}Menu$yy]   ${yl}│${yl}"  
+echo -e "${yl}│  $yy 3$wh. VLESS $wh      $yy[${wh}Menu$yy]        10$wh. ADD-HOST$wh         $yy[${wh}Menu$yy]   ${yl}│${yl}" 
+echo -e "${yl}│  $yy 4$wh. TROJAN $wh     $yy[${wh}Menu$yy]        11$wh. BACKUP$wh           $yy[${wh}Menu$yy]   ${yl}│${yl}" 
+echo -e "${yl}│  $yy 5$wh. SS WS $wh      $yy[${wh}Menu$yy]        12$wh. GEN SSL$wh          $yy[${wh}Menu$yy]   ${yl}│${yl}" 
+echo -e "${yl}│  $yy 6$wh. SOCK WS $wh    $yy[${wh}Menu$yy]        13$wh. RESTART SERVICE$wh  $yy[${wh}Menu$yy]   ${yl}│${yl}" 
+echo -e "${yl}│  $yy 7$wh. LIMIT SPEED$wh $yy[${wh}Menu$yy]        14$wh. BACK$wh             $yy[${wh}Menu$yy]   ${yl}│${yl}"
 echo -e "${yl}│                                                              ${yl}│${yl}"
 echo -e "${yl}└──────────────────────────────────────────────────────────────┘${yl}"
 echo -e "${yl}┌──────────────────────────────────────────────────────────────┐${NC}"
@@ -590,11 +590,7 @@ case $opt in
 14)
 sleep 1
 menu
-;;
 
-*)
-sleep 1
-echo -e "${m}Nomor Yang Anda Masukkan Salah!${yy}"
 ;;
 esac
 read -n 1 -s -r -p "Press any key to back on menu"
