@@ -632,11 +632,12 @@ GitUser="givpn"
 MYIP=$(curl -sS ipv4.icanhazip.com)
 clear
 #Domain
-domain=$(cat /usr/local/etc/xray/domain)
+Domen=$(cat /etc/xray/domain)
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
 CITY=$(curl -s ipinfo.io/city)
 WKT=$(curl -s ipinfo.io/timezone)
 IPVPS=$(curl -s ipinfo.io/ip)
+cpu=$(neofetch | grep "CPU" | cut -d: -f2 | sed 's/ //g')
 cname=$(awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo)
 cores=$(awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo)
 freq=$(awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo)
@@ -774,7 +775,7 @@ banner=$(cat /usr/bin/bannerku)
 ascii=$(cat /usr/bin/test)
 clear
 echo -e "\e[$banner_colour"
-figlet -f $ascii "$banner"
+#figlet -f $ascii "$banner"
 echo -e "\e[$text  VPS Script"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "  \e[$back_text                    \e[30m[\e[$box SERVER INFORMATION\e[30m ]\e[1m                  \e[m"
@@ -782,7 +783,7 @@ echo -e " \e[$line╘═══════════════════�
 echo -e "  \e[$text Cpu Model            :$cname"
 echo -e "  \e[$text Cpu Frequency        :$freq MHz"
 echo -e "  \e[$text Number Of Core       : $cores"
-echo -e "  \e[$text CPU Usage            : $cpu_usage"
+echo -e "  \e[$text CPU Usage            : $cpu"
 echo -e "  \e[$text Operating System     : "$(hostnamectl | grep "Operating System" | cut -d ' ' -f5-)
 echo -e "  \e[$text Kernel               : $(uname -r)"
 echo -e "  \e[$text Total Amount Of Ram  : $tram MB"
@@ -791,9 +792,9 @@ echo -e "  \e[$text Free RAM             : $fram MB"
 echo -e "  \e[$text System Uptime        : $uptime"
 echo -e "  \e[$text Ip Vps/Address       : $IPVPS"
 echo -e "  \e[$text Domain Name          : $domain\e[0m"
-echo -e "  \e[$text Order ID             : $oid"
-echo -e "  \e[$text Expired Status       : $exp $sts"
-echo -e "  \e[$text Provided By          : $creditt"
+echo -e "  \e[$text Order ID             : $Nama_Issued_License"
+echo -e "  \e[$text Expired Status       : $(cat /etc/${Auther}/license-remaining-active-days.db)"
+echo -e "  \e[$text Provided By          : Script Credit by Andre Sakti"
 echo -e "  \e[$text Status Update        :$stl"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "   \e[$text Traffic${NC}      \e[${text}Today       Yesterday       Month   "
