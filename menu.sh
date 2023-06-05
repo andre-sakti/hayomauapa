@@ -751,7 +751,7 @@ ssws=$(grep -c -E "^###ssws " "/etc/xray/config.json")
 # TOTAL ACC CREATE  TROJAN
 trtls=$(grep -c -E "^###trx " "/etc/xray/tcp.json")
 # TOTAL ACC CREATE  TROJAN WS TLS
-trws=$(grep -c -E "^###tr " "/etc/xray/config.json")
+trws=$(grep -c -E "^###trs " "/etc/xray/config.json")
 # TOTAL ACC CREATE OVPN SSH
 total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 # PROVIDED
