@@ -693,18 +693,8 @@ echo -e "\e[$below "
 read -p " Select xmenu :  " menu
 echo -e ""
 case $menu in
-111)
-    xmenu
-    ;;
-x)
-    clear
-    exit
-    echo -e "\e[1;31mPlease Type menu For More Option, Thank You\e[0m"
-    ;;
-*)
-    clear
-    echo -e "\e[1;31mPlease enter an correct number\e[0m"
-    sleep 1
-    menu
-    ;;
+111) clear ; xmenu ;;
+0) clear ; menu ;;
+x) exit ;;
+*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
 esac
