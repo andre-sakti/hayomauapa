@@ -743,15 +743,15 @@ d1=$(date -d "$valid" +%s)
 d2=$(date -d "$today" +%s)
 certifacate=$(((d1 - d2) / 86400))
 # TOTAL ACC CREATE VMESS WS
-vmess=$(grep -c -E "^#vms " "/usr/local/etc/xray/config.json")
+vmess=$(grep -c -E "^###vms " "/etc/xray/config.json")
 # TOTAL ACC CREATE  VLESS WS
-vless=$(grep -c -E "^#vls " "/etc/xray/config.json")
+vless=$(grep -c -E "^###vls " "/etc/xray/config.json")
 # TOTAL ACC CREATE  VLESS TCP XTLS
-ssws=$(grep -c -E "^#ssws " "/etc/xray/config.json")
+ssws=$(grep -c -E "^###ssws " "/etc/xray/config.json")
 # TOTAL ACC CREATE  TROJAN
-trtls=$(grep -c -E "^#trx " "/usr/local/etc/xray/tcp.json")
+trtls=$(grep -c -E "^###trx " "/etc/xray/tcp.json")
 # TOTAL ACC CREATE  TROJAN WS TLS
-trws=$(grep -c -E "^#tr " "/etc/xray/config.json")
+trws=$(grep -c -E "^###tr " "/etc/xray/config.json")
 # TOTAL ACC CREATE OVPN SSH
 total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 # PROVIDED
