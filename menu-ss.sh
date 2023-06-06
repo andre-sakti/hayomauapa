@@ -163,7 +163,7 @@ rm -rf /tmp/other.txt
 
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-xmenu
+menu
 }
 function renewws(){
 clear
@@ -179,7 +179,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
         read -n 1 -s -r -p "Press any key to back on menu"
-        xmenu
+        menu
 	fi
 
 	clear
@@ -193,7 +193,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
     if [ -z $user ]; then
-    xmenu
+    menu
     else
     read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^###ssws $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
@@ -217,7 +217,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
     read -n 1 -s -r -p "Press any key to back on menu"
-    xmenu
+    menu
   fi
 }
 function delws() {
@@ -232,7 +232,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
 		echo ""
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 		read -n 1 -s -r -p "Press any key to back on menu"
-        xmenu
+        menu
 	fi
 
 	clear
@@ -247,7 +247,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
     if [ -z $user ]; then
-    xmenu
+    menu
     else
     exp=$(grep -wE "^###ssws $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     sed -i "/^###ssws $user $exp/,/^},{/d" /etc/xray/config.json
@@ -263,7 +263,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
     echo ""
     read -n 1 -s -r -p "Press any key to back on menu"
     
-    xmenu
+    menu
     fi
 }
 clear
@@ -284,7 +284,7 @@ case $opt in
 2) clear ; delws ;;
 3) clear ; renewws;;
 4) clear ; cekws ;;
-0) clear ; xmenu ;;
+0) clear ; menu ;;
 x) exit ;;
-*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; xmenu ;;
+*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
