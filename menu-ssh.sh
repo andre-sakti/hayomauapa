@@ -135,7 +135,7 @@ fi
 
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+xmenu
 }
 function autodel(){
 clear
@@ -179,7 +179,7 @@ clear
                echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                
                read -n 1 -s -r -p "Press any key to back on menu"
-               menu
+               xmenu
         
 }
 function ceklim(){
@@ -203,7 +203,7 @@ echo " ";
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo " ";
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+xmenu
 }
 function cek(){
 if [ -e "/var/log/auth.log" ]; then
@@ -284,7 +284,7 @@ rm -f /tmp/vpn-login-tcp.txt
 rm -f /tmp/vpn-login-udp.txt
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+xmenu
 }
 function member(){
 clear
@@ -312,7 +312,7 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo "Account number: $JUMLAH user"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+xmenu
 }
 function renew(){
 clear
@@ -379,7 +379,7 @@ case $opt in
 5) clear ; ceklim ;;
 6) clear ; autodel ;;
 7) clear ; member ;;
-0) clear ; menu ;;
+0) clear ; xmenu ;;
 x) exit ;;
-*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
+*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; xmenu ;;
 esac
