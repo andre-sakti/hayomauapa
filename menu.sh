@@ -235,6 +235,143 @@ echo "-----------------------------"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
+function auto-reboot(){
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+MYIP=$(wget -qO- icanhazip.com);
+echo "Checking VPS"
+clear
+if [ ! -e /usr/bin/reboot ]; then
+echo '#!/bin/bash' > /usr/bin/reboot
+echo 'tanggal=$(date +"%m-%d-%Y")' >> /usr/bin/reboot
+echo 'waktu=$(date +"%T")' >> /usr/bin/reboot
+echo 'echo "Server successfully rebooted on the date of $tanggal hit $waktu." >> /root/log-reboot.txt' >> /usr/bin/reboot
+echo '/sbin/shutdown -r now' >> /usr/bin/reboot
+chmod +x /usr/bin/reboot
+fi
+
+echo -e ""
+echo -e "------------------------------------" | lolcat
+echo -e "             AUTO REBOOT"
+echo -e "------------------------------------" | lolcat
+echo -e ""
+echo -e "    1)  Auto Reboot 30 Minutes"
+echo -e "    2)  Auto Reboot 1 Hours"
+echo -e "    3)  Auto Reboot 12 Hours"
+echo -e "    4)  Auto Reboot 24 Hours"
+echo -e "    5)  Auto Reboot 1 Weeks"
+echo -e "    6)  Auto Reboot 1 Mount"
+echo -e "    7)  Turn Off Auto Reboot"
+echo -e ""
+echo -e "------------------------------------" | lolcat
+echo -e "    x)   MENU"
+echo -e "------------------------------------" | lolcat
+echo -e ""
+read -p "     Please Input Number  [1-7 or x] :  "  autoreboot
+echo -e ""
+case $autoreboot in
+1)
+echo "*/30 * * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot : On"
+echo -e "      AutoReboot Every : 30 Minutes"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+2)
+echo "0 * * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot : On"
+echo -e "      AutoReboot Every : 1 Hours"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+3)
+echo "0 */12 * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot : On"
+echo -e "      AutoReboot Every : 12 Hours"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+4)
+echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot : On"
+echo -e "      AutoReboot Every : 24 Hours"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+5)
+echo "0 0 */7 * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot : On"
+echo -e "      AutoReboot Every : 1 Weeks"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+6)
+echo "0 0 1 * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot : On"
+echo -e "      AutoReboot Every : 1 Mount"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+7)
+rm -fr /etc/cron.d/auto_reboot
+echo "" > /root/log-reboot.txt
+echo -e ""
+echo -e "======================================"
+echo -e ""
+echo -e "      AutoReboot Turned Off"
+echo -e ""
+echo -e "======================================"
+service cron reload >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+;;
+x)
+menu
+;;
+*)
+echo "Please enter an correct number"
+;;
+esac
+read -n 1 -s -r -p "Press any key to back on menu"
+
+menu
+}
 function check-service(){
 GREEN='\033[0;32m'
 PURPLE='\033[0;35m'
@@ -868,16 +1005,16 @@ echo -e " \e[36m━━━━━━━━━━━━━━━━━━━━━�
 echo -e " ${On_IRed}         ${BICyan} SSH${On_IRed}: $ressh${On_IRed}"  "${BICyan} NGINX${On_IRed}: $resngx""${On_IRed} ${BICyan}  XRAY${NC}${On_IRed}: $resv2r""${On_IRed} ${BICyan} TROJAN${NC}${On_IRed}: $resv2r${On_IRed}           ${NC}"
 echo -e " ${On_IRed}       ${BICyan}${On_IRed}      ${BICyan}STUNNEL${NC}${On_IRed}: $resst${On_IRed}${BICyan} DROPBEAR${NC}${On_IRed}: $resdbr${On_IRed}${BICyan} SSH-WS${NC}${On_IRed}: $ressshws${On_IRed}              ${NC}"
 echo -e "${yl}┌──────────────────────────────────────────────────────────────┐${yl}"
-echo -e "${yl}│                                                              ${yl}│${yl}"
+#echo -e "${yl}│                                                              ${yl}│${yl}"
 echo -e "${yl}│  $yy 1$wh. SSH $wh        $yy[${wh}Menu$yy]        9$wh.  BANDWIDTH$wh        $yy[${wh}Menu$yy]   ${yl}│${yl}"
 echo -e "${yl}│  $yy 2$wh. VMESS $wh      $yy[${wh}Menu$yy]        10$wh. BANDWIDTH USER$wh   $yy[${wh}Menu$yy]   ${yl}│${yl}"  
 echo -e "${yl}│  $yy 3$wh. VLESS $wh      $yy[${wh}Menu$yy]        11$wh. ADD-HOST$wh         $yy[${wh}Menu$yy]   ${yl}│${yl}" 
 echo -e "${yl}│  $yy 4$wh. TROJAN $wh     $yy[${wh}Menu$yy]        12$wh. GEN SSL$wh          $yy[${wh}Menu$yy]   ${yl}│${yl}" 
 echo -e "${yl}│  $yy 5$wh. SS WS $wh      $yy[${wh}Menu$yy]        13$wh. CHECK ALL SERVICE$wh$yy[${wh}Menu$yy]   ${yl}│${yl}" 
 echo -e "${yl}│  $yy 6$wh. SOCK WS $wh    $yy[${wh}Menu$yy]        14$wh. RESTART SERVICE$wh  $yy[${wh}Menu$yy]   ${yl}│${yl}" 
-echo -e "${yl}│  $yy 7$wh. LIMIT SPEED$wh $yy[${wh}Menu$yy]        15$wh. BACK$wh             $yy[${wh}Menu$yy]   ${yl}│${yl}"
+echo -e "${yl}│  $yy 7$wh. LIMIT SPEED$wh $yy[${wh}Menu$yy]        15$wh. AUTO REBOOT$wh      $yy[${wh}Menu$yy]   ${yl}│${yl}"
 echo -e "${yl}│  $yy 8$wh. BACKUP $wh     $yy[${wh}Menu$yy]        16$wh. BACK$wh             $yy[${wh}Menu$yy]   ${yl}│${yl}" 
-echo -e "${yl}│                                                              ${yl}│${yl}"
+#echo -e "${yl}│                                                              ${yl}│${yl}"
 echo -e "${yl}└──────────────────────────────────────────────────────────────┘${yl}"
 echo -e "${yl}┌──────────────────────────────────────────────────────────────┐${NC}"
 echo -e "${yl}   Version       :\033[1;36m 1.0\e[0m"
@@ -903,6 +1040,7 @@ case $opt in
 11) clear ; addhost ;;
 12) clear ; genssl ;;
 13) clear ; check-service ;;
+15) clear ; auto-reboot ;;
 14) clear ; systemctl restart xray; systemctl restart ws-stunnel; systemctl restart nginx; systemctl restart fail2ban; systemctl restart dropbear; systemctl restart ssh; systemctl restart stunnel4;
     clear; echo -e "${OKEY} Successfull Restarted All Service";
     ;;
