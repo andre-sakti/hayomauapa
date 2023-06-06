@@ -191,7 +191,7 @@ _XRAY=/usr/local/bin/xray
 apidata () {
     local ARGS=
     if [[ $1 == "reset" ]]; then
-      ARGS="-reset=true"
+      ARGS="-reset=false"
     fi
     $_XRAY api statsquery --server=$_APISERVER "${ARGS}" \
     | awk '{
@@ -225,16 +225,16 @@ print_sum() {
 }
 
 DATA=$(apidata $1)
-echo "================Inbound================" | lolcat
+echo "================ Inbound ================" | lolcat
 print_sum "$DATA" "inbound"
-echo "=======================================" | lolcat
-echo "================Outbound===============" | lolcat
+echo "=========================================" | lolcat
+echo "================ Outbound ===============" | lolcat
 print_sum "$DATA" "outbound"
-echo "=======================================" | lolcat
+echo "=========================================" | lolcat
 echo
-echo "=================User==================" | lolcat
+echo "================= USER ==================" | lolcat
 print_sum "$DATA" "user"
-echo "=======================================" | lolcat
+echo "=========================================" | lolcat
 read -n 1 -s -r -p "Press any key to back on menu"
 xmenu
 }
