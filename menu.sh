@@ -785,7 +785,7 @@ ascii=$(cat /usr/bin/test)
 clear
 echo -e "\e[$banner_colour"
 #figlet -f $ascii "$banner"
-echo -e "\e[$text  VPS Script"
+#echo -e "\e[$text  VPS Script"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "  \e[$back_text                    \e[30m[\e[$box SERVER INFORMATION\e[30m ]\e[1m                  \e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
