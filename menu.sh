@@ -808,7 +808,7 @@ echo -e " \e[$text    SSH    Vmess   Vless    Trojan-Ws   SS-WS   SOCK-WS\e[0m "
 echo -e " \e[$below     $total_ssh       $vmess      $vless          $trws            $ssws       $shockws \e[0m "
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "  \e[$number (•111)\e[m \e[$below xmenu\e[m"
+echo -e "  \e[$number (111)\e[m \e[$below xmenu >>> >>> >>> >>> >>> >>> >>> >>>\e[m"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "\e[$below "
 read -p " Select xmenu :  " menu
@@ -816,6 +816,6 @@ echo -e ""
 case $menu in
 111) clear ; xmenu ;;
 0) clear ; menu ;;
-x) exit ;;
-*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
+#x) exit ;;
+#*) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
 esac
