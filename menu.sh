@@ -181,6 +181,9 @@ menu
 fi
 }
 function x-bw(){
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
 clear
 _APISERVER=127.0.0.1:10085
 _XRAY=/usr/local/bin/xray
@@ -222,18 +225,18 @@ print_sum() {
 }
 
 DATA=$(apidata $1)
-echo "------------Inbound----------"
+echo "================Inbound================" | lolcat
 print_sum "$DATA" "inbound"
-echo "-----------------------------"
-echo "------------Outbound----------"
+echo "=======================================" | lolcat
+echo "================Outbound===============" | lolcat
 print_sum "$DATA" "outbound"
-echo "-----------------------------"
+echo "=======================================" | lolcat
 echo
-echo "-------------User------------"
+echo "=================User==================" | lolcat
 print_sum "$DATA" "user"
-echo "-----------------------------"
+echo "=======================================" | lolcat
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+xmenu
 }
 function auto-reboot(){
 red='\e[1;31m'
@@ -252,9 +255,9 @@ chmod +x /usr/bin/reboot
 fi
 
 echo -e ""
-echo -e "------------------------------------" | lolcat
+echo -e "====================================="| lolcat
 echo -e "             AUTO REBOOT"
-echo -e "------------------------------------" | lolcat
+echo -e "=====================================" | lolcat
 echo -e ""
 echo -e "    1)  Auto Reboot 30 Minutes"
 echo -e "    2)  Auto Reboot 1 Hours"
@@ -264,9 +267,9 @@ echo -e "    5)  Auto Reboot 1 Weeks"
 echo -e "    6)  Auto Reboot 1 Mount"
 echo -e "    7)  Turn Off Auto Reboot"
 echo -e ""
-echo -e "------------------------------------" | lolcat
+echo -e "=====================================" | lolcat
 echo -e "    x)   MENU"
-echo -e "------------------------------------" | lolcat
+echo -e "====================================="| lolcat
 echo -e ""
 read -p "     Please Input Number  [1-7 or x] :  "  autoreboot
 echo -e ""
@@ -275,12 +278,12 @@ case $autoreboot in
 echo "*/30 * * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot : On"
 echo -e "      AutoReboot Every : 30 Minutes"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
@@ -288,12 +291,12 @@ service cron restart >/dev/null 2>&1
 echo "0 * * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot : On"
 echo -e "      AutoReboot Every : 1 Hours"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
@@ -301,12 +304,12 @@ service cron restart >/dev/null 2>&1
 echo "0 */12 * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot : On"
 echo -e "      AutoReboot Every : 12 Hours"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
@@ -314,12 +317,12 @@ service cron restart >/dev/null 2>&1
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot : On"
 echo -e "      AutoReboot Every : 24 Hours"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
@@ -327,12 +330,12 @@ service cron restart >/dev/null 2>&1
 echo "0 0 */7 * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot : On"
 echo -e "      AutoReboot Every : 1 Weeks"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
@@ -340,12 +343,12 @@ service cron restart >/dev/null 2>&1
 echo "0 0 1 * * root /usr/bin/reboot" > /etc/cron.d/auto_reboot && chmod +x /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot : On"
 echo -e "      AutoReboot Every : 1 Mount"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
@@ -353,16 +356,16 @@ service cron restart >/dev/null 2>&1
 rm -fr /etc/cron.d/auto_reboot
 echo "" > /root/log-reboot.txt
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 echo -e ""
 echo -e "      AutoReboot Turned Off"
 echo -e ""
-echo -e "======================================"
+echo -e "======================================" | lolcat
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
 x)
-menu
+xmenu
 ;;
 *)
 echo "Please enter an correct number"
@@ -370,7 +373,7 @@ echo "Please enter an correct number"
 esac
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+xmenu
 }
 function check-service(){
 GREEN='\033[0;32m'
@@ -687,7 +690,7 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+xmenu
 }
 function cek-bandwidth(){
 clear
@@ -867,7 +870,7 @@ echo -e "Script Mod By Andre Sakti"
 
 11)
 sleep 1
-menu
+xmenu
 ;;
 
 *)
@@ -877,7 +880,7 @@ echo -e "${m}Nomor Yang Anda Masukkan Salah!${yy}"
 esac
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+xmenu
 }
 function limitspeed(){
 clear
@@ -931,7 +934,7 @@ else
 clear
 echo " You Entered The Wrong Number"
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+xmenu
 fi
 }
 function genssl(){
@@ -963,7 +966,7 @@ echo -e "[ ${green}INFO${NC} ] All finished... "
 sleep 0.5
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+xmenu
 }
 function xmenu(){
 is_root
@@ -1268,9 +1271,9 @@ echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "   \e[$text  Traffic${NC}      \e[${text}Today       Yesterday       Month   " | lolcat
-echo -e "   \e[$text  Download${NC}   \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv      $month_tx $month_txv   \e[0m"
-echo -e "   \e[$text  Upload${NC}     \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv      $month_rx $month_rxv   \e[0m"
-echo -e "   \e[$text  Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
+echo -e "   \e[$text  Download${NC}   \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv      $month_tx $month_txv   \e[0m" | lolcat
+echo -e "   \e[$text  Upload${NC}     \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv      $month_rx $month_rxv   \e[0m" | lolcat
+echo -e "   \e[$text  Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m " | lolcat
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 #echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m" 
 echo -e "                          LIST ACCOUNTS " | lolcat
