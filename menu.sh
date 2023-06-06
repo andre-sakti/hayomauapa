@@ -805,7 +805,7 @@ echo -e "   \e[$text Upload${NC}     \e[${text}$today_rx $today_rxv      $yester
 echo -e "   \e[$text Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e " \e[$text    SSH    Vmess   Vless    Trojan-Ws   SS-WS   SOCK-WS\e[0m "    
-echo -e " \e[$below     $total_ssh    $vmess    $vless        $trws            $ssws       $shockws \e[0m "
+echo -e " \e[$below     $total_ssh       $vmess      $vless          $trws            $ssws       $shockws \e[0m "
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (•111)\e[m \e[$below xmenu\e[m"
