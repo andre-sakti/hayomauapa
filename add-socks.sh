@@ -155,8 +155,8 @@ read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#socksws$/a\###sckws '"$user $exp"'\
 },{"user": "'""$user""'","pass": "'""$pwd""'"' /etc/xray/config.json
-sed -i '/#socksgrpc$/a\###skws '"$user $exp"'\
-},{"user": "'""$user""'","pass": "'""$pwd""'"' /etc/xray/config.json
+sed -i '/#socksgrpc$/a\###sckws '"$user $exp"'\
+},{"user": "'""$user""'","pass": "'""$pwd""'"' /etc/xray/grpcconfig.json
 systemctl restart xray
 cat > /home/vps/public_html/socksws-$user.txt <<-END
 {
