@@ -203,8 +203,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###ssws " "/etc/xray/config.json")
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-    sed -i "/### $user/c\###ssws $user $exp4" /etc/xray/config.json
-    sed -i "/### $user/c\###ssws $user $exp4" /etc/xray/grpcconfig.json
+    sed -i "/###ssws $user/c\###ssws $user $exp4" /etc/xray/config.json
+    sed -i "/###ssws $user/c\###ssws $user $exp4" /etc/xray/grpcconfig.json
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
