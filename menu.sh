@@ -665,7 +665,7 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[44;1;39m            ⇱ Service Information ⇲             \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "❇️ SSH / TUN                  :$status_ssh"
-echo -e "❇️ OpenVPN                   :$status_openvpn"
+#echo -e "❇️ OpenVPN                   :$status_openvpn"
 echo -e "❇️ Dropbear                   :$status_beruangjatuh"
 #echo -e "❇️ Stunnel5                   :$status_stunnel"
 #echo -e "❇️ Squid                     :$status_squid"
@@ -1267,7 +1267,7 @@ echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaini
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "   \e[$text  Traffic${NC}      \e[${text}Today       Yesterday       Month   "
+echo -e "   \e[$text  Traffic${NC}      \e[${text}Today       Yesterday       Month   " | lolcat
 echo -e "   \e[$text  Download${NC}   \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv      $month_tx $month_txv   \e[0m"
 echo -e "   \e[$text  Upload${NC}     \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv      $month_rx $month_rxv   \e[0m"
 echo -e "   \e[$text  Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
