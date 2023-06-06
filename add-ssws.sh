@@ -155,8 +155,8 @@ read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#ssws$/a\###ssws '"$user $exp"'\
 },{"password": "'""$pws""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#ssgrpc$/a\###sss '"$user $exp"'\
-},{"password": "'""$pws""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#ssgrpc$/a\###ssws '"$user $exp"'\
+},{"password": "'""$pws""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 tmp1=$(echo -n "2022-blake3-aes-128-gcm:${sspwd}:${pws}" | base64 -w0)
