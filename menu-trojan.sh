@@ -161,7 +161,7 @@ done
 rm -rf /tmp/other.txt
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+xmenu
 }
 function renewws(){
 clear
@@ -177,7 +177,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
         read -n 1 -s -r -p "Press any key to back on menu"
-        menu
+        xmenu
 	fi
 
 	clear
@@ -191,7 +191,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
     if [ -z $user ]; then
-    menu
+    xmenu
     else
     read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
@@ -215,7 +215,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
     read -n 1 -s -r -p "Press any key to back on menu"
-    menu
+    xmenu
   fi
 }
 function cekpassws(){
@@ -232,7 +232,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
         read -n 1 -s -r -p "Press any key to back on menu"
-        menu
+        xmenu
 	fi
 
 	clear
@@ -277,7 +277,7 @@ clear
 	fi
 	clear
     if [ -z $user ]; then
-    menu
+    xmenu
     else
     clear
     Domen=$(cat /etc/xray/domain)
@@ -314,7 +314,7 @@ clear
     echo -e "Script Mod By Andre Sakti"
     echo ""
     read -n 1 -s -r -p "Press any key to back on menu"
-    menu
+    xmenu
   fi
 }
 function delws() {
@@ -329,7 +329,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
 		echo ""
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 		read -n 1 -s -r -p "Press any key to back on menu"
-        menu
+        xmenu
 	fi
 
 	clear
@@ -344,7 +344,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
     if [ -z $user ]; then
-    menu
+    xmenu
     else
     exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     sed -i "/^###trs $user $exp/,/^},{/d" /etc/xray/config.json
@@ -360,7 +360,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     echo ""
     read -n 1 -s -r -p "Press any key to back on menu"
     
-    menu
+    xmenu
     fi
 }
 clear
@@ -384,7 +384,7 @@ case $opt in
 3) clear ; renewws;;
 4) clear ; cekws ;;
 5) clear ; cekpassws ;;
-6) clear ; menu ;;
+6) clear ; xmenu ;;
 x) exit ;;
-*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
+*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; xmenu ;;
 esac
