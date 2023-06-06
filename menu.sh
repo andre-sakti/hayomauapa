@@ -1091,6 +1091,9 @@ echo "1;32m" > /etc/text
 echo "1;33m" > /etc/below
 echo "47m" > /etc/back
 echo "1;35m" > /etc/number
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
 echo 3d > /usr/bin/test
 GitUser="givpn"
 #IZIN SCRIPT
@@ -1269,7 +1272,8 @@ echo -e "   \e[$text  Download${NC}   \e[${text}$today_tx $today_txv      $yeste
 echo -e "   \e[$text  Upload${NC}     \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv      $month_rx $month_rxv   \e[0m"
 echo -e "   \e[$text  Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m"
+#echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m" 
+echo -e "                          LIST ACCOUNTS " | lolcat
 echo -e " \e[$yy    SSH      Vmess     Vless    Trojan-Ws   SS-WS    SOCK-WS$yy "    
 echo -e " \e[$below     $total_ssh         $vmess         $vless         $trws          $ssws         $shockws \e[0m "
 echo -e " \e[$yy  Account   Account   Account    Account   Account   Account$yy "  
