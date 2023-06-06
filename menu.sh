@@ -793,7 +793,7 @@ echo -e "  \e[$yy Cpu Model            :$cname $\e[0m"
 echo -e "  \e[$yy Cpu Frequency        :$freq MHz $yl"
 echo -e "  \e[$yy Number Of Core       : $cores $yl"
 echo -e "  \e[$yy CPU Usage            : $cpu $text"
-echo -e "  \e[$yy Operating System     : "$(hostnamectl | grep "Operating System $text" | cut -d ' ' -f5-)
+echo -e "  \e[$yy Operating System     : "$(hostnamectl | grep "Operating System" | cut -d ' ' -f5-)
 echo -e "  \e[$yy Kernel               : $(uname -r) $text"
 echo -e "  \e[$yy Total Amount Of Ram  : $tram MB $text"
 echo -e "  \e[$yy Used RAM             : $uram MB $text"
