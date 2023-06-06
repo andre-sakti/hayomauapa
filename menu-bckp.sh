@@ -280,7 +280,7 @@ rm -rf /root/user-backup &> /dev/null
 rm -f /root/$NameUser.zip &> /dev/null
 echo
 read -n 1 -s -r -p "Press any key to back on menu"
-xmenu
+menu
 }
 function restore(){
 cd
@@ -342,7 +342,7 @@ sleep 1
 rm -f /root/backup/backup.zip &> /dev/null
 echo 
 read -n 1 -s -r -p "Press any key to back on menu"
-xmenu
+menu
 }
 function resbot(){
 clear
@@ -386,7 +386,7 @@ case $opt in
 3) clear ; bckpbot;;
 4) clear ; autobckpbot;;
 5) clear ; resbot;;
-0) clear ; xmenu ;;
+0) clear ; menu ;;
 x) exit ;;
-*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; xmenu ;;
+*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
