@@ -1198,7 +1198,7 @@ fi
 clear
 # Getting CPU Information
 vnstat_profile1=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
-vnstat -i ${vnstat_profile1} >/etc/xray/config.json
+vnstat -i ${vnstat_profile1} >/root/t1
 bulan=$(date +%b)
 users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
 users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
