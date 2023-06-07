@@ -1195,21 +1195,14 @@ else
     yesterday_tx=NULL
     yesterday_txv=NULL
 fi
-if [ "$(grep -wc live /root/t1)" != '0' ]; then
-    live=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $8}')
-    live_v=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $9}')
-    live_rx=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $2}')
-    live_rxv=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $3}')
-    live_tx=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $5}')
-    live_txv=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $6}')
-else
-    live=NULL
-    live_v=NULL
-    live_rx=NULL
-    live_rxv=NULL
-    live_tx=NULL
-    live_txv=NULL
-fi
+#if [ "$(grep -wc live /root/t1)" != '0' ]; then
+#    live=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $8}')
+#    live_v=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $9}')
+#    live_rx=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $2}')
+#    live_rxv=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $3}')
+#    live_tx=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $5}')
+#    live_txv=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $6}')
+#fi
 
 
 # STATUS EXPIRED ACTIVE
@@ -1300,9 +1293,9 @@ echo -e " \e[$line╒═══════════════════�
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (111)\e[m\e[$below xmenu"  ">>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> \e[m" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e " \e[$yy      Traffic        Download       Upload      Total   $yy"
-echo -e "   \e[$text    Live${NC}     \e[${text}$live_tx $live_txv      ${text}$live_rx $live_rxv     ${text}  $live $live_v   \e[0m"
-echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
+#echo -e " \e[$yy      Traffic        Download       Upload      Total   $yy"
+#echo -e "   \e[$text    Live${NC}     \e[${text}$live_tx $live_txv      ${text}$live_rx $live_rxv     ${text}  $live $live_v   \e[0m"
+#echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "\e[$below "
 read -p " Select xmenu :  " menu
 echo -e ""
