@@ -1195,32 +1195,20 @@ else
     yesterday_tx=NULL
     yesterday_txv=NULL
 fi
-clear
-# Getting CPU Information
-vnstat_profile1=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
-vnstat -i ${vnstat_profile1} >/root/t1
-bulan=$(date +%b)
-users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
-users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
-users1_v=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $9}')
-users1_rx=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $2}')
-users1_rxv=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $3}')
-users1_tx=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $5}')
-users1_txv=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $6}')
-if [ "$(grep -wc 127.0.0.1:10085 /root/t1)" != '0' ]; then
-    users=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $8}')
-    users_v=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $9}')
-    users_rx=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $2}')
-    users_rxv=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $3}')
-    users_tx=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $5}')
-    users_txv=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $6}')
+if [ "$(grep -wc live /root/t1)" != '0' ]; then
+    live=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $8}')
+    live_v=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $9}')
+    live_rx=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $2}')
+    live_rxv=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $3}')
+    live_tx=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $5}')
+    live_txv=$(vnstat -i ${vnstat_profile} | grep live | awk '{print $6}')
 else
-    users=NULL
-    users_v=NULL
-    users_rx=NULL
-    users_rxv=NULL
-    users_tx=NULL
-    users_txv=NULL
+    live=NULL
+    live_v=NULL
+    live_rx=NULL
+    live_rxv=NULL
+    live_tx=NULL
+    live_txv=NULL
 fi
 
 
@@ -1312,10 +1300,8 @@ echo -e " \e[$line╒═══════════════════�
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (111)\e[m\e[$below xmenu"  ">>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> \e[m" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e " \e[$yy      Traffic        Users       Today        $yy"
-echo -e "   \e[$text    Download${NC}     \e[${text}$users_tx $users_txv      $users1_tx $users1_txv  \e[0m"
-echo -e "   \e[$text    Upload${NC}       \e[${text}$users_rx $users_rxv      $users1_rx $users1_rxv  \e[0m"
-echo -e "   \e[$text    Total${NC}      \e[${text}  $users $users_v     $users1 $users1_v  \e[0m "
+echo -e " \e[$yy      Traffic        Download       Upload      Total   $yy"
+echo -e "   \e[$text    Live${NC}     \e[${text}$live_tx $live_txv      ${text}$live_rx $live_rxv     ${text}  $live $live_v   \e[0m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "\e[$below "
 read -p " Select xmenu :  " menu
