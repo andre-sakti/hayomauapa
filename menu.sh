@@ -1197,7 +1197,7 @@ else
 fi
 clear
 # Getting CPU Information
-vnstat_profile1=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '###trs')
+vnstat_profile1=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
 vnstat -i ${vnstat_profile1} >/etc/xray/config.json
 bulan=$(date +%b)
 users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
@@ -1207,13 +1207,13 @@ users1_rx=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $2}')
 users1_rxv=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $3}')
 users1_tx=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $5}')
 users1_txv=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $6}')
-if [ "$(grep -wc '###trs' /etc/xray/config.json)" != '0' ]; then
-    users=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $8}')
-    users_v=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $9}')
-    users_rx=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $2}')
-    users_rxv=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $3}')
-    users_tx=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $5}')
-    users_txv=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $6}')
+if [ "$(grep -wc 127.0.0.1:10085 /etc/xray/config.json)" != '0' ]; then
+    users=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $8}')
+    users_v=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $9}')
+    users_rx=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $2}')
+    users_rxv=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $3}')
+    users_tx=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $5}')
+    users_txv=$(vnstat -i ${vnstat_profile1} | grep 127.0.0.1:10085 | awk '{print $6}')
 else
     users=NULL
     users_v=NULL
