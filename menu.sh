@@ -1298,7 +1298,7 @@ echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaini
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "   \e[$yy    Traffic        Today       Yesterday      Month   $yy" | lolcat
+echo -e "       Traffic        Today       Yesterday      Month   " | lolcat
 echo -e "   \e[$text    Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
 echo -e "   \e[$text    Upload${NC}       \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv     $month_rx $month_rxv   \e[0m"
 echo -e "   \e[$text    Total${NC}      \e[${text}  $todayd $today_v     $yesterday $yesterday_v     $month $month_v  \e[0m "
@@ -1312,7 +1312,7 @@ echo -e " \e[$line╒═══════════════════�
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (111)\e[m\e[$below xmenu"  ">>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> \e[m" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "   \e[$yy    Traffic        Users       Today        $yy" | lolcat
+echo -e "       Traffic        Users       Today        $yy" | lolcat
 echo -e "   \e[$text    Download${NC}     \e[${text}$users_tx $users_txv      $users1_tx $users1_txv  \e[0m"
 echo -e "   \e[$text    Upload${NC}       \e[${text}$users_rx $users_rxv      $users1_rx $users1_rxv  \e[0m"
 echo -e "   \e[$text    Total${NC}      \e[${text}  $users $users_v     $users1 $users1_v  \e[0m "
