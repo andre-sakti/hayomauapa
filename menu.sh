@@ -189,10 +189,10 @@ _APISERVER=127.0.0.1:10085
 _XRAY=/usr/local/bin/xray
 
 apidata () {
-#    local ARGS=
-#    if [[ $1 == "reset" ]]; then
-#      ARGS="-reset=true"
-#    fi
+    local ARGS=
+    if [[ $1 == "reset" ]]; then
+      ARGS="-reset=true"
+    fi
     $_XRAY api statsquery --server=$_APISERVER "${ARGS}" \
     | awk '{
         if (match($1, /"name":/)) {
