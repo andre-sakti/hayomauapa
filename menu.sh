@@ -190,8 +190,8 @@ _XRAY=/usr/local/bin/xray
 
 apidata () {
     local ARGS=
-    if [[ $1 == "reset" ]]; then
-      ARGS="-reset=true"
+    if [[ $1 == "pattern" ]]; then
+      ARGS="-pattern=true"
     fi
     $_XRAY api statsquery --server=$_APISERVER "${ARGS}" \
     | awk '{
