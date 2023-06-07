@@ -1195,6 +1195,34 @@ else
     yesterday_tx=NULL
     yesterday_txv=NULL
 fi
+clear
+# Getting CPU Information
+vnstat_profile1=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '###trs')
+vnstat -i ${vnstat_profile1} >/etc/xray/config.json
+bulan=$(date +%b)
+users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
+users1=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $8}')
+users1_v=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $9}')
+users1_rx=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $2}')
+users1_rxv=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $3}')
+users1_tx=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $5}')
+users1_txv=$(vnstat -i ${vnstat_profile1} | grep today | awk '{print $6}')
+if [ "$(grep -wc '###trs' /etc/xray/config.json)" != '0' ]; then
+    users=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $8}')
+    users_v=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $9}')
+    users_rx=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $2}')
+    users_rxv=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $3}')
+    users_tx=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $5}')
+    users_txv=$(vnstat -i ${vnstat_profile1} | grep '###trs' | awk '{print $6}')
+else
+    users=NULL
+    users_v=NULL
+    users_rx=NULL
+    users_rxv=NULL
+    users_tx=NULL
+    users_txv=NULL
+fi
+
 
 # STATUS EXPIRED ACTIVE
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
@@ -1270,20 +1298,25 @@ echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaini
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "   \e[$yy    Traffic       Today       Yesterday      Month   $yy"
-echo -e "   \e[$text    Download${NC}    \e[${text}$today_tx $today_txv     $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
-echo -e "   \e[$text    Upload${NC}      \e[${text}$today_rx $today_rxv     $yesterday_rx $yesterday_rxv     $month_rx $month_rxv   \e[0m"
-echo -e "   \e[$text    Total${NC}     \e[${text}  $todayd $today_v     $yesterday $yesterday_v     $month $month_v  \e[0m "
+echo -e "   \e[$yy    Traffic        Today       Yesterday      Month   $yy" | lolcat
+echo -e "   \e[$text    Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
+echo -e "   \e[$text    Upload${NC}       \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv     $month_rx $month_rxv   \e[0m"
+echo -e "   \e[$text    Total${NC}      \e[${text}  $todayd $today_v     $yesterday $yesterday_v     $month $month_v  \e[0m "
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 #echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m" 
 echo -e "                          LIST ACCOUNTS " | lolcat
-echo -e " \e[$yy    SSH      Vmess     Vless    Trojan-Ws   SS-WS    SOCK-WS$yy "    
+echo -e " \e[$yy    SSH      Vmess     Vless    Trojan-Ws   SS-WS    SOCK-WS$yy " | lolcat  
 echo -e " \e[$below     $total_ssh         $vmess         $vless         $trws          $ssws         $shockws \e[0m "
 echo -e " \e[$yy  Account   Account   Account    Account   Account   Account$yy "  
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (111)\e[m\e[$below xmenu"  ">>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> \e[m" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
+echo -e "   \e[$yy    Traffic        Users       Today        $yy" | lolcat
+echo -e "   \e[$text    Download${NC}     \e[${text}$users_tx $users_txv      $users1_tx $users1_txv  \e[0m"
+echo -e "   \e[$text    Upload${NC}       \e[${text}$users_rx $users_rxv      $users1_rx $users1_rxv  \e[0m"
+echo -e "   \e[$text    Total${NC}      \e[${text}  $users $users_v     $users1 $users1_v  \e[0m "
+echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "\e[$below "
 read -p " Select xmenu :  " menu
 echo -e ""
