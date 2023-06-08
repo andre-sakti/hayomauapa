@@ -969,7 +969,7 @@ read -n 1 -s -r -p "Press any key to back on menu"
 xmenu
 }
 function xmenu(){
-is_root
+#is_root
 #pkg install ncurses-utils
 ip=$(wget -qO- ipinfo.io/ip)
 #domainhost=$(cat /root/domain)
@@ -984,7 +984,14 @@ kernel=$(neofetch | grep "Kernel" | cut -d: -f2 | sed 's/ //g')
 uptime=$(neofetch | grep "Uptime" | cut -d: -f2 | sed 's/ //g')
 cpu=$(neofetch | grep "CPU" | cut -d: -f2 | sed 's/ //g')
 memory=$(neofetch | grep "Memory" | cut -d: -f2 | sed 's/ //g')
-echo -e "Getting Information..."
+#echo -e "Getting Information..."
+export sem=$( curl -s https://raw.githubusercontent.com/andre-sakti/test/main/versions)
+export pak=$( cat /home/.ver)
+IPVPS=$(curl -s ipinfo.io/ip )
+ISPVPS=$( curl -s ipinfo.io/org )
+export Server_URL="raw.githubusercontent.com/andre-sakti/test/main"
+License_Key=$(cat /etc/${Auther}/license.key)
+export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 7-100 | tr -d '\r' | tr -d '\r\n')
 clear
 echo -e " \e[36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"   
 echo -e " \E[0;41;37m                     SYSTEM INFORMATION                        \E[0m"
@@ -1023,7 +1030,7 @@ echo -e "${yl}┌─────────────────────
 echo -e "${yl}   Version       :\033[1;36m Latest Version\e[0m"
 #echo -e "${yl}   Version       :\033[1;36m 1.0\e[0m"
 echo -e "${yl}   User          :\033[1;36m $Nama_Issued_License \e[0m"
-echo -e "${yl}   Expiry script $yl: ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC}"
+echo -e "${yl}   Expiry script $yl: ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC} Days" | lolcat
 echo -e "${yl}└──────────────────────────────────────────────────────────────┘${NC}"
 echo
 read -p " Select menu : " opt
@@ -1259,6 +1266,14 @@ clear
 echo -e "\e[$banner_colour"
 #figlet -f $ascii "$banner"
 #echo -e "\e[$text  VPS Script"
+export sem=$( curl -s https://raw.githubusercontent.com/andre-sakti/test/main/versions)
+export pak=$( cat /home/.ver)
+IPVPS=$(curl -s ipinfo.io/ip )
+ISPVPS=$( curl -s ipinfo.io/org )
+export Server_URL="raw.githubusercontent.com/andre-sakti/test/main"
+License_Key=$(cat /etc/${Auther}/license.key)
+export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 7-100 | tr -d '\r' | tr -d '\r\n')
+clear
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e "  \e[$back_text                    \e[30m[\e[$box SERVER INFORMATION\e[30m ]\e[1m                  \e[m"
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
@@ -1275,7 +1290,7 @@ echo -e "  \e[$yy System Uptime        : $uptime"
 echo -e "  \e[$yy Ip Vps/Address       :$xz $IPVPS $xz"
 echo -e "  \e[$yy Domain Name          :$xz $Domen $xz"
 echo -e "  \e[$yy Order ID             :$xz $Nama_Issued_License $xz"
-echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db) $wh"
+echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
