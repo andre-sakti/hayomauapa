@@ -149,9 +149,10 @@ clear
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#vless$/a\###vls '"$user $exp"'\
+harini=`date -d "0 days" +"%Y-%m-%d"`
+sed -i '/#vless$/a\###vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#vlessgrpc$/a\###vls '"$user $exp"'\
+sed -i '/#vlessgrpc$/a\###vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
 vlesslink1="vless://${uuid}@${domain}:$tls?path=/vless&security=tls&encryption=none&type=ws#${user}"
 vlesslink2="vless://${uuid}@${domain}:$none?path=/vless&encryption=none&type=ws#${user}"
@@ -177,6 +178,7 @@ echo -e "Link none TLS : ${vlesslink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${vlesslink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Created On : $harini"
 echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
