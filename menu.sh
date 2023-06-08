@@ -1293,7 +1293,7 @@ echo -e "  \e[$yy Order ID             :$xz $Nama_Issued_License $xz"
 #echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
-echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
+echo -e "  $yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$yy      Traffic        Today       Yesterday      Month   $yy"
 echo -e "   \e[$text    Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
