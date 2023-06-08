@@ -217,6 +217,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     read -n 1 -s -r -p "Press any key to back on menu"
     menu
   fi
+}
 function delws() {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
