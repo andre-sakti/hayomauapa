@@ -117,13 +117,6 @@ if [[ $sisa_hari -lt 0 ]]; then
 else
     echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
 fi
-clear
-export total2=$(grep -c -E "^'###trs " "/etc/xray/config.json")
-if [[ "$IP" = "" ]]; then
-    domain=$(cat /etc/xray/domain)
-else
-    domain=$IP
-fi
 function cekws() {
 clear
 echo -n > /tmp/other.txt
