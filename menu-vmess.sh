@@ -385,10 +385,12 @@ clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}VMESS${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Vmess     "
-echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Account Vmess     "
-echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Account Vmess     "
-echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Vmess Account    "
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Vmess Account     "
+echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Vmess Account     "
+echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User Vmess Login    "
+echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Show Config Password Vmess Account     "
+echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
 echo ""
@@ -399,7 +401,8 @@ case $opt in
 2) clear ; delws ;;
 3) clear ; renewws;;
 4) clear ; cekws ;;
-0) clear ; menu ;;
+5) clear ; showconfigvms ;;
+6) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
