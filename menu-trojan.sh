@@ -368,7 +368,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     menu
     fi
 }
-function showconfigtr () {
+function showconfigtr() {
 clear
 tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
 NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
@@ -437,11 +437,12 @@ clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Trojan      "
-echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Account Trojan      "
-echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Account Trojan      "
-echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY     "
-echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Cek Password User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Trojan Account      "
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Trojan Account     "
+echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Trojan Account     "
+echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY Login    "
+#echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Cek Password User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Show Config Password Trojan Account     "
 echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
@@ -453,7 +454,8 @@ case $opt in
 2) clear ; delws ;;
 3) clear ; renewws;;
 4) clear ; cekws ;;
-5) clear ; cekpassws ;;
+#5) clear ; cekpassws ;;
+5) clear ; showconfigtr ;;
 6) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
