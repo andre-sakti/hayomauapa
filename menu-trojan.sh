@@ -118,7 +118,12 @@ else
     echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
 fi
 clear
-
+export total2=$(grep -c -E "^'###trs " "/etc/xray/config.json")
+if [[ "$IP" = "" ]]; then
+    domain=$(cat /etc/xray/domain)
+else
+    domain=$IP
+fi
 function cekws() {
 clear
 echo -n > /tmp/other.txt
@@ -362,6 +367,71 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     
     menu
     fi
+}
+function showconfigtr () {
+clear
+tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
+NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+		clear
+		echo ""
+		echo "You have no existing clients!"
+		exit 1
+	fi
+
+	clear
+	echo ""
+	echo "SHOW USER XRAY TROJAN WS"
+	echo "Select the existing client you want to show the config"
+	echo " Press CTRL+C to return"
+	echo -e "==============================="
+	grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
+	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+		if [[ ${CLIENT_NUMBER} == '1' ]]; then
+			read -rp "Select one client [1]: " CLIENT_NUMBER
+		else
+			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+		fi
+	done
+export patchtls=/trickers-trojanwstls
+export patchnone=/trickers-trojanwsntls
+export user=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
+export harini=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
+export exp=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
+export uuid=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
+
+
+export trojanlink3="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
+export trojanlink2="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
+export trojanlink="trojan://${uuid}@${domain}:443#${user}"
+export trojanlink1="trojan://${uuid}@${doman}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
+clear
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Host/IP : ${domain}" | tee -a /etc/log-create-user.log
+echo -e "port : ${tr}" | tee -a /etc/log-create-user.log
+echo -e "Key : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
+echo -e "Path : /trojan-ws" | tee -a /etc/log-create-user.log
+echo -e "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Script Mod By Andre Sakti"
+echo "" | tee -a /etc/log-create-user.log
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu Trojan"
+menu-trojan
 }
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
