@@ -264,14 +264,80 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vls " "/etc/xray/config.json")
     menu
     fi
 }
+function showconfigvls() {
+clear
+tls="$(cat ~/log-install.txt | grep -w "Vless TLS" | cut -d: -f2|sed 's/ //g')"
+none="$(cat ~/log-install.txt | grep -w "Vless None TLS" | cut -d: -f2|sed 's/ //g')"
+NUMBER_OF_CLIENTS=$(grep -c -E "^###vls " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+		clear
+		echo ""
+		echo "You have no existing clients!"
+		exit 1
+	fi
+
+	clear
+	echo ""
+	echo "SHOW USER XRAY Vless"
+	echo "Select the existing client you want to show the config"
+	echo " Press CTRL+C to return"
+	echo -e "==============================="
+	grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | nl -s ') '
+	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+		if [[ ${CLIENT_NUMBER} == '1' ]]; then
+			read -rp "Select one client [1]: " CLIENT_NUMBER
+		else
+			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+		fi
+	done
+Domen=$(cat /etc/xray/domain)
+export user=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
+export harini=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
+export exp=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
+export uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
+
+
+export vlesslink1="vless://${uuid}@${Domen}:$tls?path=/vless&security=tls&encryption=none&type=ws#${user}"
+export vlesslink2="vless://${uuid}@${Domen}:$none?path=/vless&encryption=none&type=ws#${user}"
+export vlesslink3="vless://${uuid}@${Domen}:$tls?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=bug.com#${user}"
+clear
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "\E[44;1;39m        Xray/Vless Account        \E[0m" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain : ${Domen}" | tee -a /etc/log-create-user.log
+echo -e "port TLS : $tls" | tee -a /etc/log-create-user.log
+echo -e "port none TLS : $none" | tee -a /etc/log-create-user.log
+echo -e "id : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Encryption : none" | tee -a /etc/log-create-user.log
+echo -e "Network : ws" | tee -a /etc/log-create-user.log
+echo -e "Path : /vless" | tee -a /etc/log-create-user.log
+echo -e "Path : vless-grpc" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link TLS : ${vlesslink1}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link none TLS : ${vlesslink2}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${vlesslink3}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Created On : $harini"
+echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Script Mod By Andre Sakti"
+echo "" | tee -a /etc/log-create-user.log
+read -n 1 -s -r -p "Press any key to back on menu"
+menu-vless
+}
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Vless${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Account Vless Account     "
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Vless Account     "
+echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Vless Account     "
+echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User XRAY Login     "
+echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Show Config Password Vless Account     "
+echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
 echo ""
@@ -282,7 +348,8 @@ case $opt in
 2) clear ; delws ;;
 3) clear ; renewws;;
 4) clear ; cekws ;;
-0) clear ; menu ;;
+4) clear ; showconfigvls ;;
+6) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
