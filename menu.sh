@@ -1290,9 +1290,10 @@ echo -e "  \e[$yy System Uptime        : $uptime"
 echo -e "  \e[$yy Ip Vps/Address       :$xz $IPVPS $xz"
 echo -e "  \e[$yy Domain Name          :$xz $Domen $xz"
 echo -e "  \e[$yy Order ID             :$xz $Nama_Issued_License $xz"
-echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
+#echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
+echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$yy      Traffic        Today       Yesterday      Month   $yy"
 echo -e "   \e[$text    Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
@@ -1305,6 +1306,7 @@ echo -e " \e[$yy    SSH      Vmess     Vless    Trojan-Ws   SS-WS    SOCK-WS$yy 
 echo -e " \e[$below     $total_ssh         $vmess         $vless         $trws          $ssws         $shockws \e[0m "
 echo -e " \e[$yy  Account   Account   Account    Account   Account   Account$yy "  
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
+#echo -e "  \e[   $yyExpired Status :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 echo -e "  \e[$number (111)\e[m\e[$below xmenu"  ">>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> >>> \e[m" | lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
