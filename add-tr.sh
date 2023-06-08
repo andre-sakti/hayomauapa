@@ -149,14 +149,15 @@ clear
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#trojanws$/a\###trs '"$user $exp"'\
+harini=`date -d "0 days" +"%Y-%m-%d"`
+sed -i '/#trojanws$/a\###trs '"$user $exp $harini $uuid"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-sed -i '/#trojangrpc$/a\###trs '"$user $exp"'\
+sed -i '/#trojangrpc$/a\###trs '"$user $exp $harini $uuid"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
-sed -i '/#trojantcp$/a\###trs '"$user $exp"'\
+sed -i '/#trojantcp$/a\###trs '"$user $exp $harini $uuid"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
-sed -i '/#trojanxtls$/a\#&#trs '"$user $exp"'\
-},{"password": "'""$uuif""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
+sed -i '/#trojanxtls$/a\#&#trs '"$user $exp $harini $uuid"'\
+},{"password": "'""$$uuid""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
 
 
 systemctl restart xray
@@ -184,6 +185,7 @@ echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Created    : $harini"
 echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
