@@ -117,6 +117,8 @@ if [[ $sisa_hari -lt 0 ]]; then
 else
     echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
 fi
+clear
+
 function cekws() {
 clear
 echo -n > /tmp/other.txt
