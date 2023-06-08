@@ -348,7 +348,7 @@ case $opt in
 2) clear ; delws ;;
 3) clear ; renewws;;
 4) clear ; cekws ;;
-4) clear ; showconfigvls ;;
+5) clear ; showconfigvls ;;
 6) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
