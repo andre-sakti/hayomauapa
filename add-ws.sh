@@ -151,10 +151,11 @@ menu
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#vmess$/a\###vms '"$user $exp"'\
+harini=`date -d "0 days" +"%Y-%m-%d"`
+sed -i '/#vmess$/a\###vms '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#vmessgrpc$/a\###vms '"$user $exp"'\
+sed -i '/#vmessgrpc$/a\###vms '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/grpcconfig.json
 asu=`cat<<EOF
       {
@@ -231,6 +232,7 @@ echo -e "Link none TLS : ${vmesslink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${vmesslink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Created    : $harini"
 echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
