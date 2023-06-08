@@ -163,7 +163,7 @@ echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-function renewws(){
+function renewws() {
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
