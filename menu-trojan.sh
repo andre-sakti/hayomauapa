@@ -291,9 +291,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
 	done
 Domen=$(cat /etc/xray/domain)
 export user=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
-export harini=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
-export uuid=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
+export time=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
+export harini=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
+export uuid=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 6 | sed -n "${CLIENT_NUMBER}"p)
 
 
 export trojanlink3="trojan://${uuid}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
@@ -336,8 +337,8 @@ tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
 user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 uuid=$(cat /proc/sys/kernel/random/uuid)
 masaaktif=1
-exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-harini=`date -d "0 days" +"%Y-%m-%d"`
+exp=`date -d "$masaaktif days" +"%Y-%m-%d %T"`
+harini=`date -d "0 days" +"%Y-%m-%d %T"`
 sed -i '/#trojanws$/a\###trs '"$user $exp $harini $uuid"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojangrpc$/a\###trs '"$user $exp $harini $uuid"'\
