@@ -202,7 +202,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d %T"`
     harini=`date -d "0 days" +"%Y-%m-%d %T"`
-    uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 7 | sed -n "${CLIENT_NUMBER}"p)
+    uuid=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 7 | sed -n "${CLIENT_NUMBER}"p)
     sed -i "/###trs $user/c\###trs $user $exp4 $harini $uuid" /etc/xray/config.json
     sed -i "/###trs $user/c\###trs $user $exp4 $harini $uuid" /etc/xray/grpcconfig.json
     systemctl restart xray > /dev/null 2>&1
