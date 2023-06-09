@@ -370,7 +370,7 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo -e "Link GRPC : ${vmesslink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Created On : $harini" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "Expired On : $exp $time" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
 echo "" | tee -a /etc/log-create-user.log
@@ -379,7 +379,7 @@ rm /etc/xray/$user-none.json > /dev/null 2>&1
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vmess
 }
-function showconfigvms() {
+function VmessTrial() {
 clear
 domain=$(cat /etc/xray/domain)
 
