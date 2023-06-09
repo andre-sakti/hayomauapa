@@ -185,7 +185,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vls " "/etc/xray/config.json")
     echo -e "\\E[0;41;36m            Renew Vless            \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
-  	grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+  	grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2-4 | column -t | sort | uniq
     echo ""
     red "tap enter to go back"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -195,12 +195,12 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vls " "/etc/xray/config.json")
     else
     read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^###vls $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-    now=$(date +%Y-%m-%d)
+    now=$(date +%Y-%m-%d %T)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
-    exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
+    exp4=`date -d "$exp3 days" +"%Y-%m-%d %T"`
     sed -i "/###vls $user/c\###vls $user $exp4" /etc/xray/config.json
     sed -i "/###vls $user/c\###vls $user $exp4" /etc/xray/grpcconfig.json
     systemctl restart xray > /dev/null 2>&1
@@ -239,7 +239,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vls " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo "  User       Expired  " 
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-	grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+	grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2-4 | column -t | sort | uniq
     echo ""
     red "tap enter to go back"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -292,9 +292,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vls " "/etc/xray/config.json")
 	done
 Domen=$(cat /etc/xray/domain)
 export user=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
-export harini=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
-export uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
+export time=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
+export harini=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
+export uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 6 | sed -n "${CLIENT_NUMBER}"p)
 
 
 export vlesslink1="vless://${uuid}@${Domen}:$tls?path=/vless&security=tls&encryption=none&type=ws#${user}"
