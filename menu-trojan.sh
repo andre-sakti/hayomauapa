@@ -194,15 +194,17 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     menu
     else
     read -p "Expired (days): " masaaktif
-    exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3-4 | sort | uniq)
+    exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3-7 | sort | uniq)
     now=$(date +%Y-%m-%d %T)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d %T"`
-    sed -i "/###trs $user/c\###trs $user $exp4" /etc/xray/config.json
-    sed -i "/###trs $user/c\###trs $user $exp4" /etc/xray/grpcconfig.json
+    harini=`date -d "0 days" +"%Y-%m-%d %T"`
+    uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 7 | sed -n "${CLIENT_NUMBER}"p)
+    sed -i "/###trs $user/c\###trs $user $exp4 $harini $uuid" /etc/xray/config.json
+    sed -i "/###trs $user/c\###trs $user $exp4 $harini $uuid" /etc/xray/grpcconfig.json
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -210,6 +212,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
     echo " Client Name : $user"
+    echo " Password    : $uuid"
+    echo " Renewed On  : $harini"
     echo " Expired On  : $exp4"
     echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
