@@ -294,7 +294,8 @@ export user=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed
 export exp=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
 export time=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
-export uuid=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 6 | sed -n "${CLIENT_NUMBER}"p)
+export timecreated=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 6 | sed -n "${CLIENT_NUMBER}"p)
+export uuid=$(grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 7 | sed -n "${CLIENT_NUMBER}"p)
 
 
 export trojanlink3="trojan://${uuid}@${Domen}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
@@ -321,7 +322,7 @@ echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Created On : $harini"  | tee -a /etc/log-create-user.log
+echo -e "Created On : $harini $timecreated"  | tee -a /etc/log-create-user.log
 echo -e "Expired On : $exp $time" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
