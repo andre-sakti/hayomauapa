@@ -328,6 +328,51 @@ echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vless
 }
+function Trialvless() {
+clear
+domain=$(cat /etc/xray/domain)
+tls="$(cat ~/log-install.txt | grep -w "Vless TLS" | cut -d: -f2|sed 's/ //g')"
+none="$(cat ~/log-install.txt | grep -w "Vless None TLS" | cut -d: -f2|sed 's/ //g')"
+user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
+uuid=$(cat /proc/sys/kernel/random/uuid)
+masaaktif=59 * * * *
+exp=`date -d "$masaaktif hours" +"%Y-%m-%d %T"`
+harini=`time -d "0 days" +"%Y-%m-%d %T"`
+sed -i '/#vless$/a\###vls '"$user $exp $harini $uuid"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vlessgrpc$/a\###vls '"$user $exp $harini $uuid"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
+vlesslink1="vless://${uuid}@${domain}:$tls?path=/vless&security=tls&encryption=none&type=ws#${user}"
+vlesslink2="vless://${uuid}@${domain}:$none?path=/vless&encryption=none&type=ws#${user}"
+vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=bug.com#${user}"
+systemctl restart xray
+clear
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "\E[44;1;39m        Xray/Vless Account        \E[0m" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain : ${domain}" | tee -a /etc/log-create-user.log
+echo -e "port TLS : $tls" | tee -a /etc/log-create-user.log
+echo -e "port none TLS : $none" | tee -a /etc/log-create-user.log
+echo -e "id : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Encryption : none" | tee -a /etc/log-create-user.log
+echo -e "Network : ws" | tee -a /etc/log-create-user.log
+echo -e "Path : /vless" | tee -a /etc/log-create-user.log
+echo -e "Path : vless-grpc" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link TLS : ${vlesslink1}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link none TLS : ${vlesslink2}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${vlesslink3}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Created On : $harini"
+echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Script Mod By Andre Sakti"
+echo "" | tee -a /etc/log-create-user.log
+read -n 1 -s -r -p "Press any key to back on menu"
+}
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Vless${NC}"
@@ -337,6 +382,7 @@ echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Vless Account     "
 echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Vless Account     "
 echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User Vless Login     "
 echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Show Config Password Vless Account     "
+echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Trial Vless Account (active 1 hours only)     "
 echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
@@ -349,7 +395,8 @@ case $opt in
 3) clear ; renewws;;
 4) clear ; cekws ;;
 5) clear ; showconfigvls ;;
-6) clear ; menu ;;
+6) clear ; Trialvless ;;
+7) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
