@@ -185,7 +185,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     echo -e "\\E[0;41;36m            Renew Trojan             \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
-  	grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+  	grep -E "^###trs " "/etc/xray/config.json" | cut -d ' ' -f 2-4 | column -t | sort | uniq
     echo ""
     red "tap enter to go back"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -194,7 +194,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     menu
     else
     read -p "Expired (days): " masaaktif
-    exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3-4 | sort | uniq)
     now=$(date +%Y-%m-%d %T)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
@@ -247,7 +247,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###trs " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
-    exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
+    exp=$(grep -wE "^###trs $user" "/etc/xray/config.json" | cut -d ' ' -f 3-4 | sort | uniq)
     sed -i "/^###trs $user $exp/,/^},{/d" /etc/xray/config.json
     sed -i "/^###trs $user $exp/,/^},{/d" /etc/xray/grpcconfig.json
     systemctl restart xray > /dev/null 2>&1
@@ -321,8 +321,8 @@ echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Created On : $harini"
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "Created On : $harini"  | tee -a /etc/log-create-user.log
+echo -e "Expired On : $exp $time" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
 echo "" | tee -a /etc/log-create-user.log
@@ -374,7 +374,7 @@ echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Created On : $harini"
+echo -e "Created On : $harini"  | tee -a /etc/log-create-user.log
 echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
