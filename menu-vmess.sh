@@ -193,7 +193,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vms " "/etc/xray/config.json")
     menu
     else
     read -p "Expired (days): " masaaktif
-    exp=$(grep -wE "^###vms $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    exp=$(grep -wE "^###vms $user" "/etc/xray/config.json" | cut -d ' ' -f 3-4 | sort | uniq)
     now=$(date +%Y-%m-%d %T)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
@@ -246,7 +246,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^###vms " "/etc/xray/config.json")
     if [ -z $user ]; then
     menu
     else
-    exp=$(grep -wE "^###vms $user" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
+    exp=$(grep -wE "^###vms $user" "/etc/xray/config.json" | cut -d ' ' -f 3-4 | sort | uniq)
     sed -i "/^###vms $user $exp/,/^},{/d" /etc/xray/config.json
     sed -i "/^###vms $user $exp/,/^},{/d" /etc/xray/grpcconfig.json
     systemctl restart xray > /dev/null 2>&1
