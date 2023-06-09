@@ -390,6 +390,7 @@ echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Renew Trojan Account     "
 echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Cek User Trojan Login    "
 #echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Cek Password User XRAY     "
 echo -e "     ${BICyan}[${BIWhite}05${BICyan}] Show Config Password Trojan Account     "
+echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Trial Trojan Account (active 1 hours only)     "
 echo -e "     ${BICyan}[${BIWhite}06${BICyan}] Back to menu     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
@@ -402,7 +403,8 @@ case $opt in
 3) clear ; renewws;;
 4) clear ; cekws ;;
 5) clear ; showconfigtr ;;
-6) clear ; menu ;;
+6) clear ; TrialTrojan ;;
+7) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
