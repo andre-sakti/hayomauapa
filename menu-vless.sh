@@ -343,7 +343,7 @@ user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 uuid=$(cat /proc/sys/kernel/random/uuid)
 masaaktif=59 * * * *
 exp=`date -d "$masaaktif hours" +"%Y-%m-%d %T"`
-harini=`time -d "0 days" +"%Y-%m-%d %T"`
+harini=`date -d "0 days" +"%Y-%m-%d %T"`
 sed -i '/#vless$/a\###vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#vlessgrpc$/a\###vls '"$user $exp $harini $uuid"'\
