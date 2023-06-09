@@ -346,6 +346,13 @@ sed -i '/#trojantcp$/a\###trs '"$user $exp $harini $uuid"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
 sed -i '/#trojanxtls$/a\#&#trs '"$user $exp $harini $uuid"'\
 },{"password": "'""$$uuid""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
+
+
+systemctl restart xray
+trojanlink3="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
+trojanlink2="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
+trojanlink="trojan://${uuid}@${domain}:443#${user}"
+trojanlink1="trojan://${uuid}@${doman}:443?security=xtls&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=bug.com#${user}"
 clear
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
