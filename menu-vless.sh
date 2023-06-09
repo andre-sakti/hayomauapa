@@ -295,7 +295,8 @@ export user=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed
 export exp=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
 export time=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
-export uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 6 | sed -n "${CLIENT_NUMBER}"p)
+export timecreated=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 6 | sed -n "${CLIENT_NUMBER}"p)
+export uuid=$(grep -E "^###vls " "/etc/xray/config.json" | cut -d ' ' -f 7 | sed -n "${CLIENT_NUMBER}"p)
 
 
 export vlesslink1="vless://${uuid}@${Domen}:$tls?path=/vless&security=tls&encryption=none&type=ws#${user}"
@@ -321,7 +322,7 @@ echo -e "Link none TLS : ${vlesslink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC : ${vlesslink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Created On : $harini"
+echo -e "Created On : $harini $timecreated"
 echo -e "Expired On : $exp $time" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Script Mod By Andre Sakti"
