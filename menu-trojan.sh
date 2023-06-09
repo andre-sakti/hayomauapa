@@ -328,6 +328,51 @@ echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Press any key to back on menu Trojan"
 menu-trojan
 }
+function TrialTrojan() {
+clear
+domain=$(cat /etc/xray/domain)
+
+tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
+user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
+uuid=$(cat /proc/sys/kernel/random/uuid)
+masaaktif=1
+exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
+harini=`date -d "0 days" +"%Y-%m-%d"`
+sed -i '/#trojanws$/a\###trs '"$user $exp $harini $uuid"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#trojangrpc$/a\###trs '"$user $exp $harini $uuid"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
+sed -i '/#trojantcp$/a\###trs '"$user $exp $harini $uuid"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
+sed -i '/#trojanxtls$/a\#&#trs '"$user $exp $harini $uuid"'\
+},{"password": "'""$$uuid""'","flow": "'""xtls-rprx-direct""'","email": "'""$user""'"' /etc/xray/grpcconfig.json
+clear
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "\E[0;41;36m           TROJAN ACCOUNT          \E[0m" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Host/IP : ${Domen}" | tee -a /etc/log-create-user.log
+echo -e "port : ${tr}" | tee -a /etc/log-create-user.log
+echo -e "Key : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Flow : xtls-rprx-direct" | tee -a /etc/log-create-user.log
+echo -e "Path : /trojan-ws" | tee -a /etc/log-create-user.log
+echo -e "ServiceName : trojan-grpc" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link xTLS : ${trojanlink1}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link WS : ${trojanlink2}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${trojanlink3}" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Created On : $harini"
+echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "Script Mod By Andre Sakti"
+echo "" | tee -a /etc/log-create-user.log
+read -n 1 -s -r -p "Press any key to back on menu Trojan"
+}
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
